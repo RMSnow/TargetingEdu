@@ -1,0 +1,389 @@
+<div class="row ">
+
+    <div class="col-md-2">
+
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">题型</h3>
+
+                <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <ul class="nav nav-pills nav-stacked" ng-repeat="type in typelist">
+                    <li><a href=""><i class="fa fa-inbox"></i> {{type}}
+                    </a></li>
+                </ul>
+
+            </div>
+            <!-- /.box-body -->
+        </div>
+        <!-- /. box -->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">标记</h3>
+
+                <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <ul class="nav nav-pills nav-stacked">
+                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> 错误点</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> 加分点</a></li>
+                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> 已收藏</a></li>
+                </ul>
+            </div>
+        </div>
+        <!-- /.box -->
+    </div>
+
+    <div class="col-md-10">
+
+        <div class="box-body no-padding">
+
+            <div class="box box-solid">
+                <!--<div class="box-header with-border">-->
+                <!--<h3 class="box-title">生成练习</h3>-->
+                <!--</div>-->
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <form role="form">
+                        <!-- 试题上方信息选择 -->
+                        <div class="box-body">
+
+
+                            <div class="form-group col-md-6">
+                                <div class="box-body pad">
+                                    <form>
+                                        <textarea id="tmp" ng-model="info.comment" class="textarea"
+                                                  placeholder="Place some text here"
+                                                  style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                    </form>
+                                </div>
+                                <div class="row">
+                                    <div class="col-md-4">
+                                        <div class="form-group">
+                                            <select class="form-control" id="pid" onchange="gradeChange()">
+                                                <option>选择常用评语</option>
+                                                <option value="1">高分评语 1</option>
+                                                <option value="2">高分评语 2</option>
+                                                <option value="3">中分评语 1</option>
+                                                <option value="4">中分评语 2</option>
+                                                <option value="5">低分评语 1</option>
+                                                <option value="6">低分评语 2</option>
+                                                <option value="7">不及格评语</option>
+                                                <option value="8">零分评语</option>
+                                                <option value="9">恢复评语</option>
+                                            </select>
+                                            <script type="text/JavaScript">
+                                                function gradeChange() {
+                                                    var objS = document.getElementById("pid");
+                                                    var grade = objS.options[objS.selectedIndex].value;
+                                                    if (grade == "1") document.getElementById("tmp").value = "完成的非常出色！";
+                                                    if (grade == "2") document.getElementById("tmp").value = "逻辑很清晰，有条理，希望接着努力！";
+                                                    if (grade == "3") document.getElementById("tmp").value = "如果你细心一些会有更好的成绩！";
+                                                    if (grade == "4") document.getElementById("tmp").value = "有些地方有待加强，希望继续努力！！";
+                                                    if (grade == "5") document.getElementById("tmp").value = "如果你认真思考会有更好的成绩！";
+                                                    if (grade == "6") document.getElementById("tmp").value = "很多地方有待加强，希望继续努力！";
+                                                    if (grade == "7") document.getElementById("tmp").value = "完成得十分有待加强，希望下次更加努力！";
+                                                    if (grade == "8") document.getElementById("tmp").value = "希望能重新完成！";
+                                                    if (grade == "9") document.getElementById("tmp").value = "";
+
+                                                }
+
+                                                var btn = document.getElementById('btn');
+                                                document.getElementById("btn").onclick = function test() {
+                                                    document.getElementById("tmp").value = "";
+                                                }
+
+                                            </script>
+                                        </div>
+                                    </div>
+                                    <div class="col-md-3 pull-right">
+                                        <button class="btn btn-block btn-primary btn-sm active pull-right" id="btn"
+                                                onclick="test()">
+                                            修改评语
+                                        </button>
+                                        <script>
+                                            jQuery(document).ready(function () {
+
+                                                $(".rating-kv").rating();
+
+                                            });
+                                        </script>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group col-md-3">
+                                <form>
+                                    <br>
+                                    <!--<input id="input-id" type="classUid" class="rating" min=0 max=5 step=0.5 data-size="lg" >-->
+                                    <canvas id="canvas" height="160" width="160"></canvas>
+
+                                    <div style="text-align:center;clear:both;">
+                                        <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+                                        <script src="/follow.js" type="text/javascript"></script>
+                                    </div>
+                                    <script>
+
+                                        var doughnutData = [
+                                            {
+                                                value: 30,
+                                                color: "#F7464A"
+                                            },
+                                            {
+                                                value: 70,
+                                                color: "#46BFBD"
+                                            }
+
+                                        ];
+
+                                        var myDoughnut = new Chart(document.getElementById("canvas").getContext("2d")).Doughnut(doughnutData);
+
+                                    </script>
+                                </form>
+                                <script>
+                                    $("#input-id").rating(); //默认值初始化
+
+                                    $("#input-id").rating({'size': 'lg'});  //带参数初始化
+                                </script>
+                            </div>
+                            <br>
+                            <div class="col-md-3">
+
+                                <div><font size="1000px"><span id="sumid"></span></font>分</div>
+                            </div>
+
+                        </div>
+
+                        <!--试题部分-->
+                        <div class="box-body">
+                            <div class="form-group">
+                                <ul class="list-group">
+                                    <li class="list-group-item">
+                                        <div class="box-header">
+                                            <div class="btn-group pull-left">
+                                                <button type="button" class="btn btn-group-sm btn-default">
+                                                    作业号:{{info.assignmentUid}}
+                                                </button>
+                                                <button type="button" class="btn btn-group-sm btn-default">总分:100
+                                                </button>
+                                                <button type="button" class="btn btn-group-sm btn-default">
+                                                    姓名:{{info.studentID}}(学号:{{info.studentID}})
+                                                </button>
+                                            </div>
+                                        </div>
+                                        <!-- START ACCORDION & CAROUSEL-->
+
+                                        <div class="row">
+                                            <!-- /.col -->
+                                            <div class="col-md-9">
+                                                <div class="box box-solid">
+                                                    <div class="box-body">
+                                                        <div id="carousel-example-generic" class="carousel slide"
+                                                             data-ride="carousel">
+                                                            <ol class="carousel-indicators">
+                                                                <li data-target="#carousel-example-generic"
+                                                                    data-slide-to="0" class="active"></li>
+                                                                <li data-target="#carousel-example-generic"
+                                                                    data-slide-to="1" class=""></li>
+                                                            </ol>
+                                                            <div class="carousel-inner"
+                                                                 ng-repeat="picture in picturelist">
+                                                                <div class="item active">
+                                                                    <img src="{{picture}}"
+                                                                         style="width:100%;height:100%;"
+                                                                         alt="{{$index+1}}">
+
+                                                                    <div class="carousel-caption">
+                                                                        {{picture}}
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <!-- /.box -->
+                                            </div>
+                                            <div class="col-md-3">
+                                                <br>
+                                                <div class="box box-solid">
+                                                    <ul class="list-group" ng-repeat="question in questionList">
+                                                        <li class="list-group-item" id={{$index+1}}>
+                                                            <div class="box-header">
+                                                                <div class="btn-group pull-left">
+                                                                    <button type="button"
+                                                                            class="btn btn-group-sm btn-default">
+                                                                        题型:{{question.type}} 总分:{{question.score}}
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                            <div class="exam-con">
+
+                                                                <div class="  form-group">
+                                                                    {{$index+1}}
+
+                                                                    <label><input type="radio" name={{question.number}} ng-click="right($index+1)" value="1"/> 对</label>
+                                                                    <label> <input type="radio"  name={{question.number}}  ng-click="wrong($index+1)" value="0"/> 错</label>
+
+                                                                </div>
+                                                                <script type="text/javascript">
+
+                                                                    $(function () {
+                                                                        var chkItem = $('input[name=chkItem]');
+                                                                        chkItem.click(function () {
+                                                                            $('#sumid').html(sum());
+                                                                        });
+                                                                    });
+
+                                                                    /**
+                                                                     *@功能 计算总和
+                                                                     *@param null
+                                                                     *@return int
+                                                                     **/
+                                                                    function sum() {
+                                                                        var valueArr = $('input[name=chkItem]');
+                                                                        var sumValue = 0;
+                                                                        valueArr.each(function (index, element) {
+                                                                            if ($(this).is(":checked")) {
+                                                                                if (isNaN(valueArr[index].value) || valueArr[index].value == null || valueArr[index].value == "") {
+                                                                                    sumValue += 0;
+                                                                                } else {
+                                                                                    sumValue += parseFloat(valueArr[index].value);//强制转换为数字
+                                                                                }
+
+                                                                            }
+                                                                        });
+
+                                                                        if (sumValue > 0) {
+                                                                            sumValue = parseInt(sumValue);
+                                                                        }
+                                                                        else {
+                                                                            sumValue = 0;
+                                                                        }
+                                                                        return sumValue;
+                                                                    }
+                                                                </script>
+
+                                                                <div class="input-group  ">
+                                                                    <div class="btn-group pull-right">
+                                                                        <button type="button"
+                                                                                class="btn btn-success btn-xs">收藏
+                                                                        </button>
+                                                                        <button type="button"
+                                                                                class="btn btn-success btn-xs"
+                                                                                data-toggle="modal"
+                                                                                data-target="#myModal5">备注
+                                                                        </button>
+                                                                        <div class="modal fade" id="myModal5"
+                                                                             tabindex="-1" role="dialog"
+                                                                             aria-labelledby="myModalLabel"
+                                                                             aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button type="button"
+                                                                                                class="close"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-hidden="true">×
+                                                                                        </button>
+                                                                                        <h4 class="modal-title"
+                                                                                            id="myModalLabel1">备注</h4>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form>
+                                                                                            <textarea class="textarea"
+                                                                                                      placeholder="Place some text here"
+                                                                                                      style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                                class="btn btn-default"
+                                                                                                data-dismiss="modal">关闭
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                class="btn btn-primary">
+                                                                                            提交更改
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div><!-- /.modal-content -->
+                                                                            </div><!-- /.modal-dialog -->
+                                                                        </div>
+                                                                        <button type="button"
+                                                                                class="btn btn-success btn-xs"
+                                                                                data-toggle="modal"
+                                                                                data-target="#myModal6">点评
+                                                                        </button>
+                                                                        <div class="modal fade" id="myModal6"
+                                                                             tabindex="-1" role="dialog"
+                                                                             aria-labelledby="myModalLabel"
+                                                                             aria-hidden="true">
+                                                                            <div class="modal-dialog">
+                                                                                <div class="modal-content">
+                                                                                    <div class="modal-header">
+                                                                                        <button type="button"
+                                                                                                class="close"
+                                                                                                data-dismiss="modal"
+                                                                                                aria-hidden="true">×
+                                                                                        </button>
+                                                                                        <h4 class="modal-title"
+                                                                                            id="myModalLabel">本题点评</h4>
+                                                                                    </div>
+                                                                                    <div class="modal-body">
+                                                                                        <form>
+                                                                                            <textarea class="textarea"
+                                                                                                      placeholder="Place some text here"
+                                                                                                      style="width: 100%; height: 120px; font-size: 14px; line-height: 18px; border: 1px solid #dddddd; padding: 10px;"></textarea>
+                                                                                        </form>
+                                                                                    </div>
+                                                                                    <div class="modal-footer">
+                                                                                        <button type="button"
+                                                                                                class="btn btn-default"
+                                                                                                data-dismiss="modal">关闭
+                                                                                        </button>
+                                                                                        <button type="button"
+                                                                                                class="btn btn-primary">
+                                                                                            提交更改
+                                                                                        </button>
+                                                                                    </div>
+                                                                                </div><!-- /.modal-content -->
+                                                                            </div><!-- /.modal-dialog -->
+                                                                        </div>
+                                                                        <!--<script>-->
+                                                                        <!--$(function() {-->
+                                                                        <!--$('#myModal').modal('show')-->
+                                                                        <!--});-->
+                                                                        <!--</script>-->
+                                                                        <!--</div>-->
+                                                                    </div>
+                                                                </div>
+
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                            <!-- /.col -->
+                                        </div>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div id="flyItem" class="fly_item" data-center="863,-24"
+                                 style="left: 522px; top: 324px; visibility: hidden; transform: translate(863px, -24px);">
+                                <img src="images/item-pic.jpg" width="40" height="40"></div>
+                        </div>
+                        <div class="box-footer">
+                            <button type="button" class="btn btn-primary pull-right" ng-click="save()">保存</button>
+                        </div>
+                    </form>
+                    <!-- /.box-body -->
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,120 @@
+<link rel="stylesheet" href="/plugins/datepicker/datepicker3.css">
+
+<div class="row clearfix">
+    <div class="col-md-8">
+        <!-- general form elements -->
+        <div class="box box-primary">
+            <div class="box-header with-border">
+                <h3 class="box-title">新增班级</h3>
+            </div>
+            <!-- /.box-header -->
+            <!-- form start -->
+            <form role="form">
+                <div class="box-body">
+                    <div class="form-group">
+                        <label>班级名称:</label>
+
+                        <div class="input-group ">
+                            <div class="input-group-addon">
+                                <i class="fa fa-book" aria-hidden="true"></i></div>
+                            <input ng-model="data.title" type="text" class="form-control pull-right" id="title">
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label>年级：</label>
+                        <select class="form-control"  ng-model="data.grade">
+                            <option>初一</option>
+                            <option>初二</option>
+                            <option>初三</option>
+                            <option>高一</option>
+                            <option>高二</option>
+                            <option>高三</option>
+                        </select>
+                    </div>
+
+
+
+
+
+                    <div class="form-group">
+                        <label>备注信息:</label>
+
+                        <div class="input-group date">
+                            <div class="input-group-addon">
+                                <i class="fa fa-comment"></i>
+                            </div>
+                            <input ng-model="data.comment" type="text" class="form-control pull-right" id="comment">
+                        </div>
+                        <!-- /.input group -->
+                    </div>
+                </div>
+
+                <!-- /.box-body -->
+
+                <div class="box-footer">
+                    <button type="submit" class="btn btn-primary" ng-click="save()">确定</button>
+                    <button type="submit" class="btn btn-primary" ui-sref="class">取消</button>
+
+                </div>
+            </form>
+        </div>
+        <!-- /.box -->
+
+
+
+    </div>
+
+</div>
+
+
+<script>
+    var dates = $.datepicker.dates = {
+        en: {
+            days: ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+            daysShort: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"],
+            daysMin: ["Su", "Mo", "Tu", "We", "Th", "Fr", "Sa", "Su"],
+            months: ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"],
+            monthsShort: ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"],
+            today: "Today",
+            clear: "Clear"
+        },
+        cn: {
+            days: ["周日", "周一", "周二", "周三", "周四", "周五", "周六", "周日"],
+            daysShort: ["日", "一", "二", "三", "四", "五", "六", "七"],
+            daysMin: ["日", "一", "二", "三", "四", "五", "六", "七"],
+            months: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            monthsShort: ["一月", "二月", "三月", "四月", "五月", "六月", "七月", "八月", "九月", "十月", "十一月", "十二月"],
+            today: "今天",
+            clear: "清除"
+        }
+    };
+
+//    var defaults = $.datepicker.defaults = {
+//        autoclose: false,
+//        beforeShowDay: $.noop,
+//        calendarWeeks: false,
+//        clearBtn: false,
+//        daysOfWeekDisabled: [],
+//        endDate: Infinity,
+//        forceParse: true,
+//        format: 'yyyy/mm/dd',
+//        keyboardNavigation: true,
+//        language: 'cn',
+//        minViewMode: 0,
+//        orientation: "auto",
+//        rtl: false,
+//        startDate: -Infinity,
+//        startView: 0,
+//        todayBtn: false,
+//        todayHighlight: false,
+//        weekStart: 0
+//    };
+    $('#datepicker').datepicker({
+        autoclose: true,
+        language: 'cn'
+
+    });
+
+
+</script>

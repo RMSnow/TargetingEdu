@@ -1,0 +1,124 @@
+<div class="col-md-9">
+    <!-- The time line -->
+    <ul class="timeline">
+        <li>
+            <i class="fa fa-fw fa-genderless bg-red"></i>
+
+            <div class="timeline-item">
+
+                <h3 class="timeline-header no-border"><a href="#">学生学号:</a>{{student.studentNumber}}
+                </h3>
+            </div>
+        </li>
+        <li>
+            <i class="fa fa-fw fa-book bg-aqua"></i>
+
+            <div class="timeline-item">
+
+                <h3 class="timeline-header no-border"><a href="#">班级名称:</a>
+                </h3>
+            </div>
+        </li>
+        <li>
+            <i class="fa fa-fw fa-book bg-aqua"></i>
+
+            <div class="timeline-item">
+                <h3 class="timeline-header no-border"><a href="#">学校:</a>{{student.school}}
+                </h3>
+                <h3 class="timeline-header no-border"><a href="#">年级:</a>{{student.grade}}
+                </h3>
+                <h3 class="timeline-header no-border"><a href="#">性别:</a>{{student.sex}}
+                </h3>
+                <h3 class="timeline-header no-border"><a href="#">电话:</a>{{student.parentTel}}
+                </h3>
+                <h3 class="timeline-header no-border"><a href="#">家长微信:</a>{{student.parentWechat}}
+                </h3>
+                <h3 class="timeline-header no-border"><a href="#">城市:</a>{{student.city}}
+                </h3>
+                <h3 class="timeline-header no-border"><a href="#">省份:</a>{{student.province}}
+                </h3>
+            </div>
+        </li>
+        <!-- END timeline item -->
+        <!-- timeline item -->
+        <li>
+            <i class="fa fa-user bg-purple"></i>
+
+            <div class="timeline-item">
+
+                <h3 class="timeline-header"><a href="#">作业:</a></h3>
+
+                <div class="timeline-body">
+                    <!--<div class="col-md-9">-->
+                    <div class="box box-primary">
+                        <div class="box-header with-border">
+                            <h3 class="box-title"></h3>
+                            <div class="box-tools pull-right">
+                                <div class="has-feedback">
+                                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                                    </button>
+                                </div>
+
+                            </div>
+                            <!-- /.box-tools -->
+                        </div>
+                        <!-- /.box-header -->
+                        <div class="box-body no-padding">
+                            <div class="table-responsive mailbox-messages">
+                                <table class="table table-bordered">
+                                    <tr>
+                                        <th style="width: 100px">编号</th>
+                                        <th>作业编号</th>
+                                        <th>分数</th>
+                                    </tr>
+                                    <tr ng-repeat="x in student.submittedHomeworks">
+                                        <td>{{$index+1}}.</td>
+                                        <td>{{x.assignmentUid}}</td>
+                                        <td>{{x.score}}
+                                        </td>
+                                    </tr>
+                                </table>
+                                <!-- /.table -->
+                            </div>
+                            <!-- /.mail-box-messages -->
+                        </div>
+                        <!-- /.box-body -->
+                        <div class="box-footer clearfix">
+                            <ul class="pagination pagination-sm no-margin pull-right">
+                                <li><a href="#">&laquo;</a></li>
+                                <li><a href="#">1</a></li>
+                                <li><a href="#">2</a></li>
+                                <li><a href="#">3</a></li>
+                                <li><a href="#">&raquo;</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <!-- /. box -->
+                </div>
+            </div>
+        </li>
+        <!-- END timeline item -->
+        <!-- timeline item -->
+        <li>
+            <i class="fa fa-fw fa-calendar-check-o bg-blue"></i>
+
+            <div class="timeline-item">
+                <h3 class="timeline-header"><a href="#">入学时间:</a>  <i class="fa fa-clock-o"></i> 2017-01-01</h3>
+            </div>
+        </li>
+        <!-- END timeline item -->
+
+
+        <!-- timeline item -->
+        <!-- END timeline item -->
+    </ul>
+    <div class="col-md-3"><button type="button" class="btn btn-block btn-primary">修改</button></div><div class="col-md-3"><button type="button" class="btn btn-block btn-primary">保存</button></div>
+    <div class="col-md-3"><button type="button" class="btn btn-block btn-success" ui-sref="class">返回</button></div>
+</div>
+<!-- /.tab-pane -->
+<!-- /.tab-pane -->
+</div>
+<!-- /.tab-content -->
+</div>
+<!-- /.nav-tabs-custom -->
+</div>

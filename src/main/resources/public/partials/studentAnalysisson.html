@@ -1,0 +1,493 @@
+<div class="col-md-9">
+    <div class="nav-tabs-custom">
+        <ul class="nav nav-tabs">
+            <li class="active"><a data-toggle="tab" onclick="activity()">易错题</a></li>
+            <li><a data-toggle="tab" onclick="timeline()">课堂详情</a></li>
+            <li><a data-toggle="tab" onclick="settings()">知识点掌握</a></li>
+            <li><a data-toggle="tab" onclick="others()">综合指标</a></li>
+        </ul>
+        <div class="tab-content">
+            <div class="active tab-pane" id="activity" style="display: block;">
+
+                <script>function activity() {
+                    document.getElementById("activity").style.display="block";
+                    document.getElementById("settings").style.display="none";
+                    document.getElementById("timeline").style.display="none";
+                    document.getElementById("other").style.display="none";
+                    document.getElementById("others").style.display="none";
+                }
+                function settings() {
+                    document.getElementById("activity").style.display="none";
+                    document.getElementById("settings").style.display="block";
+                    document.getElementById("timeline").style.display="none";
+                    document.getElementById("other").style.display="none";
+                    document.getElementById("others").style.display="none";
+
+                }
+                function timeline() {
+                    document.getElementById("activity").style.display="none";
+                    document.getElementById("settings").style.display="none";
+                    document.getElementById("timeline").style.display="block";
+                    document.getElementById("other").style.display="none";
+                    document.getElementById("others").style.display="none";
+
+                }
+                function other() {
+                    document.getElementById("activity").style.display="none";
+                    document.getElementById("settings").style.display="none";
+                    document.getElementById("timeline").style.display="none";
+                    document.getElementById("other").style.display="block";
+                    document.getElementById("others").style.display="none";
+
+                }
+                function others() {
+                    document.getElementById("activity").style.display="none";
+                    document.getElementById("settings").style.display="none";
+                    document.getElementById("timeline").style.display="none";
+                    document.getElementById("other").style.display="none";
+                    document.getElementById("others").style.display="block";
+
+                }</script>
+                <!-- Post -->
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                            <tr>
+                                <th class="text-center"><input type="checkbox"
+                                                               data-ng-model="allChecked"
+                                                               data-ng-change="checkAll(allChecked)"/></th>
+                                <th>题目链接</th>
+                                <th>操作</th>
+                                <th>答题人数</th>
+                                <th>错误率</th>
+                            </tr>
+
+                            <tr>
+                                <!--<td><input type="checkbox"></td>-->
+                                <td class="text-center"><input type="checkbox"
+                                                               data-ng-model="x.$checked"
+                                                               ng-checked="isSelected(x.id)"
+                                                               data-ng-changed="checkedChange(x.id,x.$checked)"/></td>
+                                <td><a>第三次习题</a></td>
+                                <td><div class="col-md-6"><button type="button" class="btn btn-block btn-primary" ui-sref="studentAnalysisson">详情</button></div></td>
+                                <td>20</td>
+                                <td>2%</td>
+                            </tr>
+
+                            <tr>
+                                <!--<td><input type="checkbox"></td>-->
+                                <td class="text-center"><input type="checkbox"
+                                                               data-ng-model="x.$checked"
+                                                               ng-checked="isSelected(x.id)"
+                                                               data-ng-changed="checkedChange(x.id,x.$checked)"/></td>
+                                <td><a>第三次习题</a></td>
+                                <td><div class="col-md-6"><button type="button" class="btn btn-block btn-primary" ui-sref="studentAnalysisson">详情</button></div></td>
+                                <td>20</td>
+                                <td>2%</td>
+                            </tr>
+
+                            <tr>
+                                <!--<td><input type="checkbox"></td>-->
+                                <td class="text-center"><input type="checkbox"
+                                                               data-ng-model="x.$checked"
+                                                               ng-checked="isSelected(x.id)"
+                                                               data-ng-changed="checkedChange(x.id,x.$checked)"/></td>
+                                <td><a>第三次习题</a></td>
+                                <td><div class="col-md-6"><button type="button" class="btn btn-block btn-primary" ui-sref="studentAnalysisson">详情</button></div></td>
+                                <td>20</td>
+                                <td>2%</td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <!-- /.table -->
+                    </div>
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer no-padding">
+                    <div class="mailbox-controls">
+                        <!-- Check all button -->
+
+
+
+                        <div class="pull-right">
+                            1-50/200
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                            </div>
+                            <!-- /.btn-group -->
+                        </div>
+                        <!-- /.pull-right -->
+                    </div>
+                </div>
+                <!-- /. box -->
+            </div>
+            <!-- /.tab-pane -->
+            <div class="tab-pane" id="timeline" style="display: none;">
+                <!-- The timeline -->
+                <ul class="timeline">
+                    <!-- timeline time label -->
+
+                    <li class="time-label">
+                        <span class="bg-red">
+                          10 Feb. 2014
+                        </span>
+                    </li>
+                    <!-- /.timeline-label -->
+                    <!-- timeline item -->
+                    <li>
+                        <i class="fa fa-fw fa-genderless bg-blue"></i>
+
+                        <div class="timeline-item">
+
+                            <h3 class="timeline-header no-border"><a href="#">作业链接:</a>  <a>第一次课堂作业03</a>
+                            </h3>
+                        </div>
+                    </li>
+
+                    <!-- END timeline item -->
+                    <!-- timeline item -->
+                    <li>
+                        <i class="fa fa-user bg-purple"></i>
+
+                        <div class="timeline-item">
+
+                            <h3 class="timeline-header"><a href="#">本节知识点概括:</a></h3>
+
+                            <div class="timeline-body">
+                                <!--<div class="col-md-9">-->
+                                <div class="box box-primary collapsed-box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"></h3>
+                                        <div class="box-tools pull-right">
+                                            <div class="has-feedback">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-tools -->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                        <div class="table-responsive mailbox-messages">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th style="width: 100px">章节数</th>
+                                                    <th>概括</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>2.1</td>
+                                                    <td>三角函数cos</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2.2</td>
+                                                    <td>三角函数sin</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2.3</td>
+                                                    <td>三角函数tan</td>
+                                                </tr>
+                                            </table>
+                                            <!-- /.table -->
+                                        </div>
+                                        <!-- /.mail-box-messages -->
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer clearfix">
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li><a href="#">&laquo;</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">&raquo;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- /. box -->
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <i class="fa fa-fw fa-book bg-aqua"></i>
+
+                        <div class="timeline-item">
+
+                            <h3 class="timeline-header no-border"><a href="#">作业提交人数:</a>  40
+                            </h3>
+                        </div>
+                    </li>
+                    <!-- END timeline item -->
+                    <!-- timeline item -->
+                    <li>
+                        <i class="fa fa-fw fa-hourglass-half bg-green"></i>
+
+                        <div class="timeline-item">
+                            <h3 class="timeline-header"><a href="#">班级状态:</a>  <span class="label label-success">未开始</span></h3>
+                        </div>
+                    </li>
+                    <!-- END timeline item -->
+                    <li>
+                        <i class="fa fa-fw fa-users bg-purple"></i>
+
+                        <div class="timeline-item">
+
+                            <h3 class="timeline-header"><a href="#">知识点掌握情况:</a></h3>
+
+                            <div class="timeline-body">
+                                <div class="box box-primary collapsed-box">
+                                    <div class="box-header with-border">
+                                        <h3 class="box-title"></h3>
+                                        <div class="box-tools pull-right">
+                                            <div class="has-feedback">
+                                                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-plus"></i>
+                                                </button>
+                                            </div>
+
+                                        </div>
+                                        <!-- /.box-tools -->
+                                    </div>
+                                    <!-- /.box-header -->
+                                    <div class="box-body no-padding">
+                                        <div class="table-responsive mailbox-messages">
+                                            <table class="table table-bordered">
+                                                <tr>
+                                                    <th>学号</th>
+                                                    <th>姓名</th>
+                                                    <th>入学时间</th>
+                                                    <th>家长电话</th>
+                                                    <th>家长微信</th>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015302580040</td>
+                                                    <td>过岚清</td>
+                                                    <td>2014-01-01
+                                                    </td>
+                                                    <td>15071365969</td>
+                                                    <td>wechat</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015302580040</td>
+                                                    <td>过岚清</td>
+                                                    <td>2014-01-01
+                                                    </td>
+                                                    <td>15071365969</td>
+                                                    <td>wechat</td>
+                                                </tr>
+                                                <tr>
+                                                    <td>2015302580040</td>
+                                                    <td>过岚清</td>
+                                                    <td>2014-01-01
+                                                    </td>
+                                                    <td>15071365969</td>
+                                                    <td>wechat</td>
+                                                </tr>
+                                            </table>
+                                            <!-- /.table -->
+                                        </div>
+                                        <!-- /.mail-box-messages -->
+                                    </div>
+                                    <!-- /.box-body -->
+                                    <div class="box-footer clearfix">
+                                        <ul class="pagination pagination-sm no-margin pull-right">
+                                            <li><a href="#">&laquo;</a></li>
+                                            <li><a href="#">1</a></li>
+                                            <li><a href="#">2</a></li>
+                                            <li><a href="#">3</a></li>
+                                            <li><a href="#">&raquo;</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <!-- /. box -->
+                            </div>
+                        </div>
+                    </li>
+                    <!-- END timeline item -->
+                    <li>
+                        <i class="fa fa-clock-o bg-gray"></i>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.tab-pane -->
+
+            <div class="tab-pane" id="settings" style="display: none;">
+                人数
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-10">
+                            <canvas id="canvas1" height="450" width="700"></canvas>
+
+                            <div style="text-align:center;clear:both;">
+                                <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+                                <script src="/follow.js" type="text/javascript"></script>
+                            </div>
+                            <script>
+
+                                var barChartData = {
+                                    labels : ["三角函数","勾股定理","立体几何","解析几何","导数","集合"],
+                                    datasets : [
+                                        {
+                                            fillColor : "rgba(220,220,220,0.5)",
+                                            strokeColor : "rgba(220,220,220,1)",
+                                            data : [65,59,90,81,56,55]
+                                        },
+                                        {
+                                            fillColor : "rgba(151,187,205,0.5)",
+                                            strokeColor : "rgba(151,187,205,1)",
+                                            data : [28,48,40,19,96,27]
+                                        },
+                                        {
+                                            fillColor : "rgba(151,20,10,0.5)",
+                                            strokeColor : "rgba(151,20,10,1)",
+                                            data : [30,30,20,10,96,27]
+                                        }
+                                    ]
+
+                                }
+
+                                var myLine = new Chart(document.getElementById("canvas1").getContext("2d")).Bar(barChartData);
+
+                            </script>
+
+                        </div>
+                        <div class="col-md-2">
+                            <ul class="chart-legend clearfix">
+                                <li><i class="fa fa-circle-o text-red"></i> 好</li>
+                                <li><i class="fa fa-circle-o text-green"></i> 一般</li>
+                                <li><i class="fa fa-circle-o text-aqua"></i> 差</li>
+                            </ul>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-pane" id="others" style="display: none;">
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                            <tr>
+                                <th></th>
+                                <th>姓名</th>
+                                <th>学号</th>
+                                <th>综合指标</th>
+                            </tr>
+
+                            <tr ng-repeat=" x in rows">
+                                <!--<td><input type="checkbox"></td>-->
+                                <td></td>
+                                <td>{{x.name}}</td>
+                                <td>{{x.studentID}}</td>
+                                <td><div class="col-md-4"><button type="button" class="btn btn-block btn-primary" onclick="other()">详情</button></div></td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+                        <!-- /.table -->
+                    </div>
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer no-padding">
+                    <div class="mailbox-controls">
+                        <!-- Check all button -->
+
+
+
+                        <div class="pull-right">
+                            1-50/200
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                            </div>
+                            <!-- /.btn-group -->
+                        </div>
+                        <!-- /.pull-right -->
+                    </div>
+                </div>
+                <!-- /. box -->
+            </div>
+            <div class="tab-pane" id="other" style="display: none;">
+                <!-- /.box-header -->
+                <div class="box-body">
+                    <div class="row">
+                        <div class="col-md-8">
+                            <div class="chart-responsive">
+                                <canvas id="canvas" height="400" width="400"></canvas>
+                                <div style="text-align:center;clear:both;">
+                                    <script src="/gg_bd_ad_720x90.js" type="text/javascript"></script>
+                                    <script src="/follow.js" type="text/javascript"></script>
+                                </div>
+
+                                <script>
+                                    var chartData = [
+                                        {
+                                            value : Math.random(),
+                                            color: "#D97041"
+                                        },
+                                        {
+                                            value : Math.random(),
+                                            color: "#C7604C"
+                                        },
+                                        {
+                                            value : Math.random(),
+                                            color: "#21323D"
+                                        },
+                                        {
+                                            value : Math.random(),
+                                            color: "#9D9B7F"
+                                        },
+                                        {
+                                            value : Math.random(),
+                                            color: "#7D4F6D"
+                                        }
+                                    ];
+                                    var myPolarArea = new Chart(document.getElementById("canvas").getContext("2d")).PolarArea(chartData);
+                                </script>
+                            </div>
+                            <!-- ./chart-responsive -->
+                        </div>
+                        <!-- /.col -->
+                        <div class="col-md-4">
+                            <ul class="chart-legend clearfix">
+                                <li><i class="fa fa-circle-o text-red"></i> 知识</li>
+                                <li><i class="fa fa-circle-o text-green"></i> 情感</li>
+                                <li><i class="fa fa-circle-o text-yellow"></i> 个性心理</li>
+                                <li><i class="fa fa-circle-o text-aqua"></i> 方法和思维</li>
+                                <li><i class="fa fa-circle-o text-light-blue"></i> 环境</li>
+                            </ul>
+                        </div>
+                        <!-- /.col -->
+                    </div>
+                    <!-- /.row -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer no-padding">
+                    <ul class="nav nav-pills nav-stacked">
+                        <li><a href="#">知识
+                            <span class="pull-right text-red"><i class="fa fa-angle-down"></i> 10分</span></a></li>
+                        <li><a href="#">情感 <span class="pull-right text-green"><i class="fa fa-angle-up"></i> 9分</span></a>
+                        </li>
+                        <li><a href="#">个性心理
+                            <span class="pull-right text-yellow"><i class="fa fa-angle-left"></i> 8分</span></a></li>
+                        <li><a href="#">方法和思维
+                            <span class="pull-right text-aqua"><i class="fa fa-angle-left"></i> 9分</span></a></li>
+                        <li><a href="#">环境
+                            <span class="pull-right text-light-blue"><i class="fa fa-angle-left"></i> 6分</span></a></li>
+                    </ul>
+                </div>
+                <!-- /.footer -->
+            </div>
+        </div>
+        <!-- /.tab-pane -->
+    </div>
+    <!-- /.tab-content -->
+</div>
+<!-- /.nav-tabs-custom -->
+</div>

@@ -1,0 +1,314 @@
+<link rel="stylesheet" type="text/css" href="css/base.css"/>
+<link rel="stylesheet" href="css/magic-check.css">
+
+<link href="http://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
+<script src="http://cdn.bootcss.com/bootstrap-datetimepicker/4.17.47/js/bootstrap-datetimepicker.min.js"></script>
+<script src="js/addtionalJs/moment-with-locales.min.js"></script>
+
+<div class="row " onload="setKnowledgeTree()">
+
+    <div class="col-md-3">
+        <div class="box box-solid">
+            <button type="button" class="btn btn-block  btn-sm  btn-primary  " ui-sref="addHomework">继续选题</button>
+            <br>
+            <div class="box-body no-padding">
+                <div class="radio-">
+                    <div class="col-md-4"><i class="fa fa-fw fa-clipboard"></i>下载答题卡</div>
+
+                    <div class="col-md-4"><i class="fa fa-fw fa-line-chart"></i>试卷分析</div>
+
+                    <div class="col-md-4"><i class="fa fa-fw fa-save" ng-click="showModifyModal()"></i>保存试卷</div>
+                </div>
+            </div>
+        </div>
+
+
+        <!--试卷结构调整-->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">试卷结构调整</h3>
+
+                <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+            </div>
+            <div class="box-body no-padding">
+                <div class="radio-">
+                    <div class="col-md-4"><input type="radio" name="layout" id="1">
+                        <label for="1">简易模板</label></div>
+                    <div class="col-md-4"><input type="radio" name="layout" id="2">
+                        <label for="2">普通模板</label></div>
+                    <div class="col-md-4"><input type="radio" name="layout" id="3">
+                        <label for="3">正式模板</label></div>
+
+                </div>
+            </div>
+            <!-- /.box-body -->
+        </div>
+
+
+        <!--操作-->
+        <div class="box box-solid">
+            <div class="box-header with-border">
+                <h3 class="box-title">保存和下载</h3>
+
+                <div class="box-tools">
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+
+                <div class="row  ">
+                    <div class="col-md-6 column">
+                        <button type="button" class="btn btn-block  btn-primary" id="renderPdf">下载试卷</button>
+
+                        </button>
+
+                    </div>
+                    <div class="col-md-6 column">
+
+                        <button type="button" class="btn btn-block    btn-success  " ng-click="showModifyModal()">
+                            保存试卷
+                        </button>
+                    </div>
+
+
+                </div>
+
+            </div>
+
+
+        </div>
+    </div>
+
+
+    <div class="col-md-9">
+
+        <div class="box-body no-padding" id="paper-content">
+
+            <div class="box box-solid">
+
+                <div class="box box-primary">
+                    <!-- /.box-header -->
+                    <form role="form">
+
+
+                        <div data-force="30" class="layer block">
+                            <div class="layer title">选择试题</div>
+
+
+                            <ol type=value1 class="block__list block__list_words"
+                                ng-repeat="x in questions | orderBy:type"
+                            >
+
+                                <li class="list-group-item" data-qid="{{x.classUid}}" data-qtype="{{x.chapter}}">
+                                    <div class="exam-con">
+                                        <!--AngularJS 解析HTML安全策略-->
+
+                                        <p ng-bind="($index+1)"></p>
+                                        <div class="exam-q" ng-bind-html="x.title | trustHtml">
+
+                                        </div>
+
+                                    </div>
+                                    <div class="box-footer">
+                                        章节：
+                                        {{x.chapter}}
+
+
+
+                                    </div>
+
+                                </li>
+
+
+                            </ol
+                            >
+                        </div>
+
+
+                    </form>
+                    <!-- /.box-body -->
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+</div>
+
+
+<script type="text/javascript" src="sort/Sortable.js"></script>
+<script type="text/javascript" src="sort/st/app.js"></script>
+
+
+<script src="http://cdn.bootcss.com/angular.js/1.2.32/angular.min.js"></script>
+
+
+<script type="text/javascript" src="js/jsPdf.debug.js"></script>
+<script type="text/javascript">
+
+
+    var downPdf = document.getElementById("renderPdf");
+
+
+    downPdf.onclick = function () {
+        html2canvas(document.getElementById("paper-content"), {
+
+            background: '#ffffff',
+            useCORS: true,
+            "logging": true, //Enable log (use Web Console for get Errors and Warnings)
+//            "proxy": "http://localhost:8080/" + "proxy/proxy.do", // 代理的访问路径
+
+
+            onrendered: function (canvas) {
+
+
+//                canvas.id = "mycanvas";
+//                // 创建img对象
+//                var img = document.createElement("img");
+//                img.crossOrigin = "anonymous";
+//                var url = canvas.toDataURL();
+//                img.src =  url;
+//                $("#Screenshot_show img").remove();
+//                $("#Screenshot_show").append(img);
+
+
+                var contentWidth = canvas.width;
+                var contentHeight = canvas.height;
+
+                //一页pdf显示html页面生成的canvas高度;
+                var pageHeight = contentWidth / 592.28 * 841.89;
+                //未生成pdf的html页面高度
+                var leftHeight = contentHeight;
+                //pdf页面偏移
+                var position = 0;
+                //a4纸的尺寸[595.28,841.89]，html页面生成的canvas在pdf中图片的宽高
+                var imgWidth = 595.28;
+                var imgHeight = 592.28 / contentWidth * contentHeight;
+
+                var pageData = canvas.toDataURL('image/jpeg', 1.0);
+
+                var pdf = new jsPDF('', 'pt', 'a4');
+
+
+                //有两个高度需要区分，一个是html页面的实际高度，和生成pdf的页面高度(841.89)
+                //当内容未超过pdf一页显示的范围，无需分页
+                if (leftHeight < pageHeight) {
+                    pdf.addImage(pageData, 'JPEG', -30, 30, imgWidth, imgHeight);
+                } else {
+                    while (leftHeight > 0) {
+                        pdf.addImage(pageData, 'JPEG', -30, position, imgWidth, imgHeight)
+                        leftHeight -= pageHeight;
+                        position -= 841.89;
+                        //避免添加空白页
+                        if (leftHeight > 0) {
+                            pdf.addPage();
+                        }
+                    }
+                }
+
+                pdf.save('content.pdf');
+            }
+//          ,allowTaint:true ,  useCORS:true
+        });
+    }
+
+
+</script>
+
+
+<style>
+    /* Tomorrow Theme */
+    /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+    /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+    /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+    .tomorrow-comment, pre .comment, pre .title {
+        color: #8e908c;
+    }
+
+    .tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
+        color: #c82829;
+    }
+
+    .tomorrow-orange, pre .ordinal, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+        color: #f5871f;
+    }
+
+    .tomorrow-yellow, pre .class, pre .ruby .class .title, pre .css .rules .attribute {
+        color: #eab700;
+    }
+
+    .tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+        color: #718c00;
+    }
+
+    .tomorrow-aqua, pre .css .hexcolor {
+        color: #3e999f;
+    }
+
+    .tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+        color: #4271ae;
+    }
+
+    .tomorrow-purple, pre .keyword, pre .javascript .function {
+        color: #8959a8;
+    }
+
+    pre {
+        border: 0;
+        background-color: #fff;
+    }
+
+    pre code {
+        display: block;
+        color: #4d4d4c;
+        font-size: 15px;
+        font-family: Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+        padding: 30px;
+    }
+</style>
+<script type="text/ng-template" id="modal">
+    <div class="modal-header">
+        <h3>保存试卷</h3>
+    </div>
+    <div class="modal-body">
+        <form>
+
+            <div class="form-group">
+                <label>作业标题:</label>
+
+                <div class="input-group ">
+                    <div class="input-group-addon">
+                        <i class="fa fa-book" aria-hidden="true"></i></div>
+                    <input ng-model="assignment.title" type="text" class="form-control pull-right" id="title">
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label>作业类型：</label>
+                <select class="form-control" ng-model="assignment.type">
+                    <option selected="selected">课堂作业</option>
+                    <option>课堂练习</option>
+                </select>
+            </div>
+
+            <div class="input-group date ">
+                <label>截止日期:</label>
+                <div class="input-group date" id="datetimepicker">
+                    <span class="input-group-addon">
+                        <span class="glyphicon glyphicon-calendar" data-ng-click="datepicker()"></span>
+                    </span>
+                    <input type="text" class="form-control" ng-model="assignment.deadline"/>
+                </div>
+            </div>
+        </form>
+    </div>
+    <div class="modal-footer">
+
+        <button class="btn btn-primary" ng-click="ok()">保存试卷</button>
+        <button class="btn btn-default" ng-click="cancel()">关闭</button>
+    </div>
+</script>

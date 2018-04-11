@@ -1,0 +1,271 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+    <meta property="og:image" content="/st/og-image.png"/>
+
+    <title>Sortable. No jQuery.</title>
+
+    <meta name="keywords"
+          content="sortable, reorder, list, javascript, html5, drag and drop, dnd, animation, groups, angular, ng-sortable, react, mixin, effects, rubaxa"/>
+    <meta name="description"
+          content="Sortable - is a minimalist JavaScript library for reorderable drag-and-drop lists on modern browsers and touch devices. No jQuery. Supports Meteor, AngularJS, React and any CSS library, e.g. Bootstrap."/>
+    <meta name="viewport" content="width=device-width, initial-scale=0.5"/>
+
+
+    <link href="st/app.css" rel="stylesheet" type="text/css"/>
+</head>
+<body>
+
+
+<div class="container">
+    <div style="padding: 80px 150px 0; height: 160px;">
+        <a class="logo" href="https://github.com/RubaXa/Sortable"><img src="st/logo.png"/></a>
+        <h1 data-force="40" data-force-y="2.5">The JavaScript library for modern browsers and touch devices. No&nbsp;jQuery.</h1>
+    </div>
+</div>
+
+
+<!-- Connected lists -->
+<div class="container" >
+    <div data-force="30" class="layer block" >
+        <div class="layer title">List A</div>
+        <ul id="foo" class="block__list block__list_words">
+            <li class="list-group-item">
+
+                <div class="exam-con">
+                    <div class="exam-q">
+                        2. 绘制以下算法对应的程序框图：
+                        第一步，输入变量x；
+                        第二步，根据函数f（x）=<img class="mathml"
+                                          src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%22%3E%3Cmfenced+open%3D%22%7B%22+close%3D%22%22%3E%3Cmtable%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E5%3C%2Fmn%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmfenced%3E%3Cmrow%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%E2%89%A5%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E3%3C%2Fmn%3E%3Cmfenced%3E%3Cmrow%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3Cmo%3E%E2%89%A4%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26lt%3B%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E4%3C%2Fmn%3E%3Cmo%3E%2B%3C%2Fmo%3E%3Cmn%3E3%3C%2Fmn%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmfenced%3E%3Cmrow%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26lt%3B%3C%2Fmo%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3C%2Fmtable%3E%3C%2Fmfenced%3E%3C%2Fmath%3E&amp;key=92ea160183f99d644f9387d39bf31b60"
+                                          style="vertical-align: middle;" draggable="false">
+                        对变量y赋值，使y=f（x）；
+                        第三步，输出变量y的值．
+
+                    </div>
+                </div>
+
+            </li>
+
+
+            <li class="list-group-item">
+
+                <div class="exam-con">
+                    <div class="exam-q">
+                        4. 定义在D上的函数f（x），如果满足：对任意x∈D，存在常数M＞0，都有|f（x）|≤M成立，则称f（x）是D上的有界函数，其中M称为函数f（x）的上界．  已知函数f（x）=1+a•（ <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ）<sup>x</sup>+（ <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E4%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ）<sup>x</sup>；g（x）= <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmrow%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmo%3E%26%23x2212%3B%3C%2Fmo%3E%3Cmi%3Em%3C%2Fmi%3E%3Cmo%3E%26%23x22C5%3B%3C%2Fmo%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmsup%3E%3C%2Fmrow%3E%3Cmrow%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmo%3E%2B%3C%2Fmo%3E%3Cmi%3Em%3C%2Fmi%3E%3Cmo%3E%26%23x22C5%3B%3C%2Fmo%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmsup%3E%3C%2Fmrow%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> <br>（Ⅰ）当a=1时，求函数f（x）值域并说明函数f（x）在（﹣∞，0）上是否为有界函数？<br>（Ⅱ）若函数f（x）在[0，+∞）上是以3为上界的有界函数，求实数a的取值范围；<br>（Ⅲ）已知m＞﹣1，函数g（x）在[0，1]上的上界是T（m），求T（m）的取值范围．
+                    </div>
+
+
+
+
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="exam-con">
+                    <div class="exam-q">
+                        9. 已知函数 <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmi%3Ef%3C%2Fmi%3E%3Cmrow%3E%3Cmo%3E%28%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%29%3C%2Fmo%3E%3C%2Fmrow%3E%3Cmo%3E%3D%3C%2Fmo%3E%3Cmrow%3E%3Cmo%3E%7B%3C%2Fmo%3E%3Cmtable+columnalign%3D%27left%27%3E%3Cmtr%3E%3Cmtd%3E%3Cmsup%3E%3Cmn%3E2%3C%2Fmn%3E%3Cmrow%3E%3Cmo%3E%26%23x2212%3B%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3C%2Fmrow%3E%3C%2Fmsup%3E%3Cmi%3E%26%23xFF0C%3B%3C%2Fmi%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26%23x2264%3B%3C%2Fmo%3E%3Cmn%3E0%3C%2Fmn%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmsup%3E%3Cmi%3E%26%23xFF0C%3B%3C%2Fmi%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmi%3E%26gt%3B%3C%2Fmi%3E%3Cmn%3E0%3C%2Fmn%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3C%2Fmtable%3E%3C%2Fmrow%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ，f（x<sub>0</sub>）＞1，则x<sub>0</sub>的取值范围为（&nbsp;&nbsp; ）
+                    </div>
+
+                    <div class="exam-s">
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">A、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣1）∪（1，+∞）</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">B、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣2）∪（2，+∞）&nbsp;&nbsp;</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">C、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，0）∪（1，+∞）</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">D、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣3）∪（2，+∞）</span></span>
+
+                    </div>
+
+
+
+
+                </div>
+            </li>
+
+            <li class="list-group-item">
+
+                <div class="exam-con">
+                    <div class="exam-q">
+                        2. 绘制以下算法对应的程序框图：
+                        第一步，输入变量x；
+                        第二步，根据函数f（x）=<img class="mathml"
+                                          src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%22%3E%3Cmfenced+open%3D%22%7B%22+close%3D%22%22%3E%3Cmtable%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E5%3C%2Fmn%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmfenced%3E%3Cmrow%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%E2%89%A5%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E3%3C%2Fmn%3E%3Cmfenced%3E%3Cmrow%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3Cmo%3E%E2%89%A4%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26lt%3B%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E4%3C%2Fmn%3E%3Cmo%3E%2B%3C%2Fmo%3E%3Cmn%3E3%3C%2Fmn%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmfenced%3E%3Cmrow%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26lt%3B%3C%2Fmo%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3C%2Fmtable%3E%3C%2Fmfenced%3E%3C%2Fmath%3E&amp;key=92ea160183f99d644f9387d39bf31b60"
+                                          style="vertical-align: middle;" draggable="false">
+                        对变量y赋值，使y=f（x）；
+                        第三步，输出变量y的值．
+
+                    </div>
+                </div>
+
+            </li>
+
+
+            <li class="list-group-item">
+
+                <div class="exam-con">
+                    <div class="exam-q">
+                        4. 定义在D上的函数f（x），如果满足：对任意x∈D，存在常数M＞0，都有|f（x）|≤M成立，则称f（x）是D上的有界函数，其中M称为函数f（x）的上界．  已知函数f（x）=1+a•（ <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ）<sup>x</sup>+（ <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E4%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ）<sup>x</sup>；g（x）= <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmrow%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmo%3E%26%23x2212%3B%3C%2Fmo%3E%3Cmi%3Em%3C%2Fmi%3E%3Cmo%3E%26%23x22C5%3B%3C%2Fmo%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmsup%3E%3C%2Fmrow%3E%3Cmrow%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmo%3E%2B%3C%2Fmo%3E%3Cmi%3Em%3C%2Fmi%3E%3Cmo%3E%26%23x22C5%3B%3C%2Fmo%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmsup%3E%3C%2Fmrow%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> <br>（Ⅰ）当a=1时，求函数f（x）值域并说明函数f（x）在（﹣∞，0）上是否为有界函数？<br>（Ⅱ）若函数f（x）在[0，+∞）上是以3为上界的有界函数，求实数a的取值范围；<br>（Ⅲ）已知m＞﹣1，函数g（x）在[0，1]上的上界是T（m），求T（m）的取值范围．
+                    </div>
+
+
+
+
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="exam-con">
+                    <div class="exam-q">
+                        9. 已知函数 <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmi%3Ef%3C%2Fmi%3E%3Cmrow%3E%3Cmo%3E%28%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%29%3C%2Fmo%3E%3C%2Fmrow%3E%3Cmo%3E%3D%3C%2Fmo%3E%3Cmrow%3E%3Cmo%3E%7B%3C%2Fmo%3E%3Cmtable+columnalign%3D%27left%27%3E%3Cmtr%3E%3Cmtd%3E%3Cmsup%3E%3Cmn%3E2%3C%2Fmn%3E%3Cmrow%3E%3Cmo%3E%26%23x2212%3B%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3C%2Fmrow%3E%3C%2Fmsup%3E%3Cmi%3E%26%23xFF0C%3B%3C%2Fmi%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26%23x2264%3B%3C%2Fmo%3E%3Cmn%3E0%3C%2Fmn%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmsup%3E%3Cmi%3E%26%23xFF0C%3B%3C%2Fmi%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmi%3E%26gt%3B%3C%2Fmi%3E%3Cmn%3E0%3C%2Fmn%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3C%2Fmtable%3E%3C%2Fmrow%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ，f（x<sub>0</sub>）＞1，则x<sub>0</sub>的取值范围为（&nbsp;&nbsp; ）
+                    </div>
+
+                    <div class="exam-s">
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">A、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣1）∪（1，+∞）</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">B、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣2）∪（2，+∞）&nbsp;&nbsp;</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">C、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，0）∪（1，+∞）</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">D、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣3）∪（2，+∞）</span></span>
+
+                    </div>
+
+
+
+
+                </div>
+            </li>
+            <li class="list-group-item">
+
+                <div class="exam-con">
+                    <div class="exam-q">
+                        2. 绘制以下算法对应的程序框图：
+                        第一步，输入变量x；
+                        第二步，根据函数f（x）=<img class="mathml"
+                                          src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%22%3E%3Cmfenced+open%3D%22%7B%22+close%3D%22%22%3E%3Cmtable%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E5%3C%2Fmn%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmfenced%3E%3Cmrow%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%E2%89%A5%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E3%3C%2Fmn%3E%3Cmfenced%3E%3Cmrow%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3Cmo%3E%E2%89%A4%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26lt%3B%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmn%3E4%3C%2Fmn%3E%3Cmo%3E%2B%3C%2Fmo%3E%3Cmn%3E3%3C%2Fmn%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmfenced%3E%3Cmrow%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26lt%3B%3C%2Fmo%3E%3Cmo%3E-%3C%2Fmo%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmrow%3E%3C%2Fmfenced%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3C%2Fmtable%3E%3C%2Fmfenced%3E%3C%2Fmath%3E&amp;key=92ea160183f99d644f9387d39bf31b60"
+                                          style="vertical-align: middle;" draggable="false">
+                        对变量y赋值，使y=f（x）；
+                        第三步，输出变量y的值．
+
+                    </div>
+                </div>
+
+            </li>
+
+
+            <li class="list-group-item">
+
+                <div class="exam-con">
+                    <div class="exam-q">
+                        4. 定义在D上的函数f（x），如果满足：对任意x∈D，存在常数M＞0，都有|f（x）|≤M成立，则称f（x）是D上的有界函数，其中M称为函数f（x）的上界．  已知函数f（x）=1+a•（ <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ）<sup>x</sup>+（ <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E4%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ）<sup>x</sup>；g（x）= <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmfrac%3E%3Cmrow%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmo%3E%26%23x2212%3B%3C%2Fmo%3E%3Cmi%3Em%3C%2Fmi%3E%3Cmo%3E%26%23x22C5%3B%3C%2Fmo%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmsup%3E%3C%2Fmrow%3E%3Cmrow%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmo%3E%2B%3C%2Fmo%3E%3Cmi%3Em%3C%2Fmi%3E%3Cmo%3E%26%23x22C5%3B%3C%2Fmo%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmsup%3E%3C%2Fmrow%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> <br>（Ⅰ）当a=1时，求函数f（x）值域并说明函数f（x）在（﹣∞，0）上是否为有界函数？<br>（Ⅱ）若函数f（x）在[0，+∞）上是以3为上界的有界函数，求实数a的取值范围；<br>（Ⅲ）已知m＞﹣1，函数g（x）在[0，1]上的上界是T（m），求T（m）的取值范围．
+                    </div>
+
+
+
+
+                </div>
+            </li>
+
+            <li class="list-group-item">
+                <div class="exam-con">
+                    <div class="exam-q">
+                        9. 已知函数 <img class="mathml" src="http://math.21cnjy.com/MathMLToImage?mml=%3Cmath+xmlns%3D%27http%3A%2F%2Fwww.w3.org%2F1998%2FMath%2FMathML%27%3E%3Cmrow%3E%3Cmi%3Ef%3C%2Fmi%3E%3Cmrow%3E%3Cmo%3E%28%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%29%3C%2Fmo%3E%3C%2Fmrow%3E%3Cmo%3E%3D%3C%2Fmo%3E%3Cmrow%3E%3Cmo%3E%7B%3C%2Fmo%3E%3Cmtable+columnalign%3D%27left%27%3E%3Cmtr%3E%3Cmtd%3E%3Cmsup%3E%3Cmn%3E2%3C%2Fmn%3E%3Cmrow%3E%3Cmo%3E%26%23x2212%3B%3C%2Fmo%3E%3Cmi%3Ex%3C%2Fmi%3E%3C%2Fmrow%3E%3C%2Fmsup%3E%3Cmi%3E%26%23xFF0C%3B%3C%2Fmi%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmo%3E%26%23x2264%3B%3C%2Fmo%3E%3Cmn%3E0%3C%2Fmn%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3Cmtr%3E%3Cmtd%3E%3Cmsup%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmrow%3E%3Cmfrac%3E%3Cmn%3E1%3C%2Fmn%3E%3Cmn%3E2%3C%2Fmn%3E%3C%2Fmfrac%3E%3C%2Fmrow%3E%3C%2Fmsup%3E%3Cmi%3E%26%23xFF0C%3B%3C%2Fmi%3E%3Cmi%3Ex%3C%2Fmi%3E%3Cmi%3E%26gt%3B%3C%2Fmi%3E%3Cmn%3E0%3C%2Fmn%3E%3C%2Fmtd%3E%3C%2Fmtr%3E%3C%2Fmtable%3E%3C%2Fmrow%3E%3C%2Fmrow%3E%3C%2Fmath%3E&amp;key=11b30895ab6eb4a5197b90e7e8c4177c" style="vertical-align: middle;" draggable="false"> ，f（x<sub>0</sub>）＞1，则x<sub>0</sub>的取值范围为（&nbsp;&nbsp; ）
+                    </div>
+
+                    <div class="exam-s">
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">A、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣1）∪（1，+∞）</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">B、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣2）∪（2，+∞）&nbsp;&nbsp;</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">C、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，0）∪（1，+∞）</span></span>
+
+                        <span class="op-item" style="width: 220px; margin-right: 0px; height: 24px; clear: none;"><span class="op-item-nut" style="margin-top: 0px;">D、</span><span class="op-item-meat" style="margin-top: 0px;">（﹣∞，﹣3）∪（2，+∞）</span></span>
+
+                    </div>
+
+
+
+
+                </div>
+            </li>
+
+
+        </ul>
+    </div>
+
+
+</div>
+
+
+</div>
+
+
+<script src="Sortable.js"></script>
+<script src="http://cdn.bootcss.com/angular.js/1.2.32/angular.min.js"></script>
+
+<script src="st/app.js"></script>
+
+
+<!-- highlight.js -->
+<style>
+    /* Tomorrow Theme */
+    /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+    /* Original theme - https://github.com/chriskempson/tomorrow-theme */
+    /* http://jmblog.github.com/color-themes-for-google-code-highlightjs */
+    .tomorrow-comment, pre .comment, pre .title {
+        color: #8e908c;
+    }
+
+    .tomorrow-red, pre .variable, pre .attribute, pre .tag, pre .regexp, pre .ruby .constant, pre .xml .tag .title, pre .xml .pi, pre .xml .doctype, pre .html .doctype, pre .css .id, pre .css .class, pre .css .pseudo {
+        color: #c82829;
+    }
+
+    .tomorrow-orange, pre .ordinal, pre .preprocessor, pre .built_in, pre .literal, pre .params, pre .constant {
+        color: #f5871f;
+    }
+
+    .tomorrow-yellow, pre .class, pre .ruby .class .title, pre .css .rules .attribute {
+        color: #eab700;
+    }
+
+    .tomorrow-green, pre .string, pre .value, pre .inheritance, pre .header, pre .ruby .symbol, pre .xml .cdata {
+        color: #718c00;
+    }
+
+    .tomorrow-aqua, pre .css .hexcolor {
+        color: #3e999f;
+    }
+
+    .tomorrow-blue, pre .function, pre .python .decorator, pre .python .title, pre .ruby .function .title, pre .ruby .title .keyword, pre .perl .sub, pre .javascript .title, pre .coffeescript .title {
+        color: #4271ae;
+    }
+
+    .tomorrow-purple, pre .keyword, pre .javascript .function {
+        color: #8959a8;
+    }
+
+    pre {
+        border: 0;
+        background-color: #fff;
+    }
+
+    pre code {
+        display: block;
+        color: #4d4d4c;
+        font-size: 15px;
+        font-family: Menlo, Monaco, Consolas, monospace;
+        line-height: 1.5;
+        /*padding: 30px;*/
+    }
+</style>
+
+
+</body>
+</html>

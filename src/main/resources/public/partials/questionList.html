@@ -1,0 +1,36 @@
+<div class="box-body no-padding" id="paper-content">
+
+    <div class="box box-solid">
+
+        <div class="box box-primary">
+            <!-- /.box-header -->
+            <form role="form">
+
+                <div data-force="30" class="layer block">
+                    <div class="layer title">试题列表</div>
+                    <ol type=value1 class="block__list block__list_words"
+                        ng-repeat="x in questions | orderBy:type">
+
+                        <li class="list-group-item">
+                            <div class="exam-con">
+                                <!--AngularJS 解析HTML安全策略-->
+
+                                <p ng-bind="($index+1)"></p>
+                                <div class="exam-q" ng-bind-html="x.title | trustHtml"></div>
+
+                            </div>
+                            <div class="box-footer">
+                                章节：{{x.chapter}}
+                            </div>
+
+                        </li>
+                    </ol>
+                </div>
+            </form>
+            <!-- /.box-body -->
+        </div>
+
+    </div>
+    <div class="col-md-1"><button type="button" class="btn btn-block btn-success" ui-sref="assignment">返回</button></div>
+</div>
+

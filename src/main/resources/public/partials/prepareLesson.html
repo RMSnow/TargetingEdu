@@ -1,0 +1,181 @@
+
+
+<div class="col-md-12">
+    <div class="box box-primary">
+        <div class="box-header with-border">
+            <h3 class="box-title">作业列表</h3>
+
+            <div class="box-tools pull-right">
+                <div class="has-feedback">
+                    <!--<input type="text" class="form-control input-sm" placeholder="Search Mail">-->
+                    <!--<span class="glyphicon glyphicon-search form-control-feedback"></span>-->
+                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
+                    </button>
+                </div>
+
+            </div>
+            <!-- /.box-tools -->
+        </div>
+        <!-- /.box-header -->
+        <div class="box-body no-padding">
+            <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right">
+                    1-50/200
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right 状态码  -->
+            </div>
+            <div class="table-responsive mailbox-messages">
+                <table class="table table-hover table-striped">
+                    <tbody>
+                    <tr>
+                        <th></th>
+                        <th>作业</th>
+                        <th>已提交人数</th>
+                        <th>创建日期</th>
+                        <th>作业类型</th>
+                        <th>作业状态</th>
+                        <th>操作</th>
+                        <th>操作</th>
+                    </tr>
+                    <tr data-ng-repeat="x in assignment">
+                        <td class="text-center"><input type="checkbox"
+                                                       data-ng-changed="checkedChange(x.id,x.$checked)"/>
+                        </td>
+                        <td>{{x.title}}</td>
+
+                        <td>{{x.committedNumber}}</td>
+                        <td>{{x.create_time}}</td>
+                        <td ng-switch={{x.type}}>
+                            <span ng-switch-when=0>课堂练习</span>
+                            <span ng-switch-when=1>课后作业</span>
+                            <span ng-switch-default>课堂练习</span>
+                        </td>
+                        <td ng-switch={{x.status}}>
+                            <span ng-switch-when=0 class="label label-success">未发布</span>
+                            <span ng-switch-when=1 class="label label-primary">已发布</span>
+                            <span ng-switch-default class="label label-warning">未发布</span>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary  "
+                                    ng-click="getHomeworks(x.assignmentUid)">批改
+                            </button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-sm btn-primary "
+                                    onclick="del(x.ordinal)">删除
+                            </button>
+                        </td>
+
+                    </tr>
+                    </tbody>
+                </table>
+                <!--<table class="table table-hover table-striped">-->
+                    <!--<tbody>-->
+                    <!--<tr>-->
+                        <!--<th></th>-->
+                        <!--<th>课程名称</th>-->
+                        <!--<th>上课时间</th>-->
+                        <!--<th>课程状态</th>-->
+                        <!--<th>操作</th>-->
+                    <!--</tr>-->
+                    <!--&lt;!&ndash;status状态码 0:未开始 1:正在上课 2:已结课&ndash;&gt;-->
+                    <!--&lt;!&ndash;<tr ng-repeat=" x in classes">&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td><input type="checkbox"></td>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<td>{{x.number}}</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td>{{x.title}}</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<td>{{x.start_time}}</td>&ndash;&gt;-->
+
+                    <!--&lt;!&ndash;<td ng-switch={{x.status}}>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span  ng-switch-when=0 class="label label-success">未开始</span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span ng-switch-when=1 class="label label-primary">正在上课</span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span ng-switch-when=2 class="label label-warning">已结课</span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;<span ng-switch-default class="label label-warning">未知</span>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+
+                    <!--&lt;!&ndash;<td>{{x.comment}}</td>&ndash;&gt;-->
+                    <!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+                    <!--<tr>-->
+                        <!--<td></td>-->
+
+                        <!--<td>C#程序设计</td>-->
+                        <!--<td>2017-05-19</td>-->
+                        <!--<td>-->
+                            <!--<span class="label label-success">待备课</span>-->
+                        <!--</td>-->
+                        <!--<td><div class="col-md-4"><button type="button" class="btn btn-block btn-primary">备课</button></div><div class="col-md-4"><button type="button" class="btn btn-block btn-primary">删除</button></div></td>-->
+                    <!--</tr>-->
+
+                    <!--<tr>-->
+                        <!--<td></td>-->
+
+                        <!--<td>C#程序设计</td>-->
+                        <!--<td>2017-05-19</td>-->
+                        <!--<td>-->
+                            <!--<span class="label label-primary">待授课</span>-->
+                        <!--</td>-->
+                        <!--<td><div class="col-md-4"><button type="button" class="btn btn-block btn-primary">备课</button></div><div class="col-md-4"><button type="button" class="btn btn-block btn-primary">删除</button></div></td>-->
+                    <!--</tr>-->
+
+                    <!--<tr>-->
+                        <!--<td></td>-->
+
+                        <!--<td>C#程序设计</td>-->
+                        <!--<td>2017-05-19</td>-->
+                        <!--<td>-->
+                            <!--<span class="label label-warning">已授课</span>-->
+                        <!--</td>-->
+                        <!--<td><div class="col-md-4"><button type="button" class="btn btn-block btn-primary">备课</button></div><div class="col-md-4"><button type="button" class="btn btn-block btn-primary">删除</button></div></td>-->
+                    <!--</tr>-->
+
+
+                    <!--</tbody>-->
+                <!--</table>-->
+                <!-- /.table -->
+            </div>
+            <!-- /.mail-box-messages -->
+        </div>
+        <!-- /.box-body -->
+        <div class="box-footer no-padding">
+            <div class="mailbox-controls">
+                <!-- Check all button -->
+                <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
+                </button>
+                <div class="btn-group">
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
+                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                </div>
+                <!-- /.btn-group -->
+                <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
+                <div class="pull-right">
+                    1-50/200
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i></button>
+                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i></button>
+                    </div>
+                    <!-- /.btn-group -->
+                </div>
+                <!-- /.pull-right -->
+            </div>
+        </div>
+    </div>
+    <!-- /. box -->
+</div>
