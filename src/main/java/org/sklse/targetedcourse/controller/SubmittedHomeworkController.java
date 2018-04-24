@@ -100,7 +100,7 @@ public class SubmittedHomeworkController {
 
         submittedHomework.setChecked(true);
 //        List<Answer> answers=new ArrayList<>();
-//        List<Question> testQuestions=getQuestions(submittedHomework.getUid());
+//        List<Question> testQuestions=getQuestions(submittedHomework.getAnswerUid());
 //        for(int i=0;i<testQuestions.size();i++){
 //            Answer answer=new Answer(testQuestions.get(i).getClassUid());
 //            answers.add(answer);

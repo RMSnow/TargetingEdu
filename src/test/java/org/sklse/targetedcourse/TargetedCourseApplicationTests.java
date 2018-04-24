@@ -1,4 +1,4 @@
-package com.sklse.targetedcourse;
+package org.sklse.targetedcourse;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;

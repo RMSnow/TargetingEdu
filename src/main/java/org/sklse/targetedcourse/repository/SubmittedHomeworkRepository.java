@@ -1,5 +1,6 @@
 package org.sklse.targetedcourse.repository;
 
+import org.sklse.targetedcourse.bean.Answer;
 import org.sklse.targetedcourse.bean.SubmittedHomework;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
@@ -19,7 +20,7 @@ public interface SubmittedHomeworkRepository extends JpaRepository<SubmittedHome
     List<SubmittedHomework> findAllByAssignmentUid(String assignmentUid);
 
     @Modifying
-    @Query(value = "update SubmittedHomework sh set isChecked = false where assignmentUid=?1 ")
-    void updateByAssignmentUid(String assignmentUid);
+    @Query(value = "update SubmittedHomework sh set score=?2, comment=?3 where assignmentUid=?1")
+    void checkHomeworkByAssignmentUid(String assignmentUid,int score,String comment);
 
 }

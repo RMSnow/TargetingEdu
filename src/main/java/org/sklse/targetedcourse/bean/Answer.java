@@ -18,11 +18,11 @@ public class Answer {
     @Column(name = "AnswerUid", length = 36)
     private String AnswerUid;
 
-    public String getUid() {
+    public String getAnswerUid() {
         return AnswerUid;
     }
 
-    public void setUid(String uid) {
+    public void setAnswerUid(String uid) {
         this.AnswerUid = uid;
     }
 
