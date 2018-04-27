@@ -23,4 +23,5 @@ public interface SubmittedHomeworkRepository extends JpaRepository<SubmittedHome
     @Query(value = "update SubmittedHomework sh set score=?2, comment=?3 where assignmentUid=?1")
     void checkHomeworkByAssignmentUid(String assignmentUid,int score,String comment);
 
+    List<SubmittedHomework> findAll();
 }

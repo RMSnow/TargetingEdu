@@ -393,7 +393,6 @@ function QuestionCtrl($scope,$http,$state){
 
 function CheckHomeworkCtrl($scope, $http, $state, $stateParams) {
 
-
     var currentAssignmentUid = localStorage.getItem("currentAssignmentUid");
 
     $http({

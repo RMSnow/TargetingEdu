@@ -43,6 +43,13 @@ public class SubmittedHomeworkController {
     @Autowired
     private SubmittedHomeworkService submittedHomeworkService;
 
+    @ApiOperation("根据teacherId选出所有作业")
+    @RequestMapping(value="getAllAssignment",method = RequestMethod.GET)
+    public ResponseEntity<ResultModel> getAllAssignment(@RequestParam String id){
+        List<SubmittedHomework> list=submittedHomeworkRepository.findAll();
+
+        return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK,list),HttpStatus.OK);
+    }
 
     @ApiOperation("根据submittedHomeworkUid查询对应的试题题型列表")
     @RequestMapping(value = "/getTypeList", method = RequestMethod.GET)
@@ -107,7 +114,6 @@ public class SubmittedHomeworkController {
 //        }
 //        submittedHomework.setAnswers(answers);
         submittedHomeworkService.save(submittedHomework);
-        System.out.println("111");
         return "success";
     }
 
