@@ -34,7 +34,6 @@ import java.util.Date;
 @SpringBootApplication
 public class TargetedCourseApplication {
 
-
 	public static void main(String[] args) {
 		SpringApplication.run(TargetedCourseApplication.class, args);
 	}
