@@ -94,7 +94,6 @@ public class UserController {
         }
         teacherRepository.save(teacher);
         return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK, "注册成功"), HttpStatus.OK);
-
     }
 
 
