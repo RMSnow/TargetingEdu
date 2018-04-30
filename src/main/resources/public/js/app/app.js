@@ -127,7 +127,7 @@ app.factory('HttpInterceptor', function ($q, $injector) {
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
                      $httpProvider) {
     $httpProvider.interceptors.push('HttpInterceptor');
-    $urlRouterProvider.otherwise('/index');
+    $urlRouterProvider.otherwise('/login');
     $stateProvider.state('index', {
         url: '/index',
         views: {
