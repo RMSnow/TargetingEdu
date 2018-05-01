@@ -364,7 +364,6 @@ function AssignmentCtrl($scope, $http, $state) {
     $scope.getSubmitHomeworks = function (uid) {
         localStorage.setItem("currentAssignmentUid", uid);
         $state.go("checkhomework");
-
     }
     $scope.getQuestions=function (assignmentUid) {
         localStorage.setItem("Uid",assignmentUid);
@@ -411,7 +410,6 @@ function CheckHomeworkCtrl($scope, $http, $state, $stateParams) {
 
         localStorage.setItem("submitHomeworkUid", uid);
 
-
         $state.go("check");
     }
 
@@ -432,10 +430,9 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
         }).success(function (response) {
             if (response["code"] == 200) {
                 $scope.typelist = response['content'];
-
             }
         })
-    }
+    };
 
 
     $http({
@@ -447,7 +444,6 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
     }).success(function (response) {
         if (response["code"] == 200) {
             $scope.questionList = response['content'];
-
         }
 
     });
@@ -474,10 +470,8 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
         }
     }).success(function (respense) {
 
-
         $scope.info = respense;
-    })
-
+    });
 
     getTypeList(submitHomeworkUid);
 
@@ -486,9 +480,12 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
     $scope.info = {};
     $scope.info.uid = submitHomeworkUid;
 
-
     $scope.save = function () {
         $scope.info.checkResult = localStorage.getItem("checks");
+        score=0;
+        checks.forEach(function (v) {
+            if (v==1) score=score+1;
+        });
         $http({
 
             url: 'submitHomework/check',
@@ -512,7 +509,7 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
         localStorage.setItem("checks", JSON.stringify(checks));
         console.log(JSON.parse(localStorage.getItem("checks")));
 
-    }
+    };
     $scope.wrong = function (order) {
         checks[order - 1] = 0;
 
