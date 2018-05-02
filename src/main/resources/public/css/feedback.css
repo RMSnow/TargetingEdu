@@ -1,0 +1,72 @@
+.feedback-box:hover{
+    box-shadow: 0px 1px 8px rgba(0,0,0,0.3);
+    transition: .3s;
+    cursor: pointer;
+}
+.class-box-footer-tab-active{
+    color:#00c0ef;
+}
+.class-box-footer-tab-active:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 20%;
+    right: 20%;
+    height: 3px;
+    background: #00c0ef;
+    -webkit-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease-out;
+    transition-timing-function: ease-out;
+}
+.class-box-footer-tab:hover{
+    -webkit-transition: .3s;
+    transition: .3s;
+    color:#00c0ef;
+    cursor: pointer;
+}
+.class-box-footer-tab:after{
+    content: "";
+    display: block;
+    position: absolute;
+    bottom: -10px;
+    left: 20%;
+    right: 20%;
+    height: 0;
+    background: #00c0ef;
+    -webkit-transition-duration: 0.2s;
+    transition-duration: 0.2s;
+    -webkit-transition-timing-function: ease-in;
+    transition-timing-function: ease-in;
+}
+.class-box-footer-tab:hover:after,.class-box-footer-tab:active:after{
+    height:3px;
+}
+.header-icon{
+    text-align: center;
+    line-height: 90px;
+    font-size: 45px;
+    width: 90px !important;
+    height: 90px !important;
+    border: 3px solid #fff;
+}
+.feedback-list-menu-item{
+    padding-bottom:15px;
+}
+
+
+.boxFadeInUp{
+    animation-name: boxFadeInUp;
+}
+@keyframes boxFadeInUp {
+    from {
+        opacity: 0;
+        transform: translate3d(0, 20%, 0);
+    }
+
+    to {
+        opacity: 1;
+        transform: none;
+    }
+}

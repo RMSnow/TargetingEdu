@@ -1,8 +1,8 @@
 var app = angular
 
-    .module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate'])
+    .module('myApp', ['ui.router', 'ui.bootstrap', 'ngAnimate','ui.calendar'])
 
-    .controller('myCtrl', function ($scope,$http) {
+    .controller('myCtrl', function ($scope,$http,$state) {
         $http({
             header: {"authorization": localStorage.getItem("token")},
             url: "teacher/getTeacherDetail",
@@ -10,19 +10,19 @@ var app = angular
         }).success(function (response) {
             $scope.teacher = response;
         })
-
+        $scope.state = $state;
 
     })
     .config(['$httpProvider', function ($httpProvider) {
-    //token请求头配置
+        //token请求头配置
         var token  = localStorage.getItem('token');
         if (token !=null){
             $httpProvider.defaults.headers.common['Authorization'] =token ;
         }
 
-    $httpProvider.interceptors.push('responseObserver');
+        $httpProvider.interceptors.push('responseObserver');
 
-}]);
+    }]);
 
 //统一的处理函数
 app.factory('responseObserver', function responseObserver($q, $window) {
@@ -98,31 +98,6 @@ app.factory('HttpInterceptor', function ($q, $injector) {
         }
     };
 });
-// app.factory('HttpInterceptor', function ($q, $injector) {
-//     return {
-//         request: function (config) {
-//             return config;
-//         },
-//         requestError: function (err) {
-//             return $q.reject(err);
-//         },
-//         response: function (res) {
-//             return res;
-//         },
-//         responseError: function (err) {
-//             var stateService = $injector.get('$state');
-//             if (-1 === err.status) {
-//                 // 远程服务器无响应
-//             } else if (500 === err.status) {
-//                 // alert(err.toString())
-//             } else if (404 === err.status) {
-//                 // alert(err.toString())
-//             }
-//             // return $q.reject(err);
-//             return err;
-//         }
-//     };
-// });
 // 路由转换
 app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
                      $httpProvider) {
@@ -329,7 +304,6 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
             }
         }
     })
-
 
 });
 app.filter('Enabled', function () {
