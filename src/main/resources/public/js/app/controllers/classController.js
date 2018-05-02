@@ -84,7 +84,7 @@ function ClassListCtrl($scope, $http, $state) {
         localStorage.setItem("classUid", number);
 
         console.log(localStorage.getItem("classUid"));
-        $state.go('detailClass')
+        $state.go('index.detailClass')
     }
 
     $scope.checkAll = function (checked) {
@@ -109,18 +109,18 @@ function ClassListCtrl($scope, $http, $state) {
         })
     }
     $scope.find = function () {
-        $state.go('feedbackson');
+        $state.go('index.feedbackson');
         //alert("hsudhsaudhsau");
     }
 
     $scope.retreat = function () {
         //$('.close').click();
-        $state.go('feedback');
+        $state.go('index.feedback');
         //alert("hsudhsaudhsau");
     }
     $scope.addHomework = function () {
         //$('.close').click();
-        $state.go('addHomework');
+        $state.go('index.addHomework');
         //alert("hsudhsaudhsau");
     }
 
@@ -297,7 +297,7 @@ function StudentCtrl($scope, $http, $state) {
             $scope.get(r.id);
             $('.close').click();
             alert("添加成功!");
-            $state.go('class');
+            $state.go('index.class');
         });
     }
 
@@ -305,7 +305,7 @@ function StudentCtrl($scope, $http, $state) {
 
     $scope.getDetails = function (studentUid) {
         localStorage.setItem("studentUid", studentUid);
-        $state.go("detailStudent");
+        $state.go("index.detailStudent");
     }
 
 
@@ -346,7 +346,7 @@ function AddStudentCtrl($scope, $http, $state) {
             if (message == 'success') {
                 alert("添加成功!");
 
-                $state.go('class');
+                $state.go('index.class');
             } else {
                 alert(response['content']);
 

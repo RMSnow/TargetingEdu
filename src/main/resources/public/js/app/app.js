@@ -108,99 +108,102 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
         views: {
             '': {
                 templateUrl: 'partials/home.html',
-                controller: ClassListCtrl
-            }
+            },
+            'navbar-header@index':{
+                templateUrl:'partials/main/navbar-header.html',
+                controller:ClassListCtrl
+            },
+            'navbar-aside@index':{
+                templateUrl:'partials/main/navbar-aside.html',
+            },
+            'content@index':{
+                templateUrl:'partials/classlist.html',
+                controller:ClassListCtrl
+            },
+
         }
-    }).state('class', {
+    }).state('index.class', {
         url: '/class',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/class.html',
                 controller: StudentCtrl
             }
 
         }
-    }).state('check', {
+    }).state('index.check', {
         url: '/check',
         params: {
             'uid': null,
         },
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/check.html',
                 controller: CheckCtrl
             }
 
         }
-    }).state('feedback', {
-        url: '/feedback',
-        views: {
-            '': {
-                templateUrl: 'partials/feedback.html',
-                controller: ClassListCtrl
-            }
-        }
-    }).state('studentAnalysis', {
+    }).state('index.studentAnalysis', {
         url: '/studentAnalysis',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/studentAnalysis.html',
                 controller: ClassListCtrl
             }
         }
-    }).state('prepareLesson', {
+    }).state('index.prepareLesson', {
         url: '/prepareLesson',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/prepareLesson.html',
                 controller: PrepareLessonCtrl
 
             }
         }
-    }).state('assignment', {
+    }).state('index.assignment', {
         url: '/assignment',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/assignment.html',
                 controller: AssignmentCtrl
             }
         }
-    }).state('feedbackson', {
+    }).state('index.feedbackson', {
         url: '/feedbackson',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/feedbackson.html',
                 controller: ClassListCtrl
             }
         }
-    }).state('addHomework', {
+    }).state('index.addHomework', {
         url: '/addHomework',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/addHomework.html',
                 controller: AddHomeworkCtrl
             }
         }
-    }).state('afterclassHomework', {
+    }).state('index.afterclassHomework', {
         url: '/afterclassHomework',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/afterclassHomework.html',
                 controller: ClassListCtrl
             }
         }
-    }).state('addClass', {
+    }).state('index.addClass', {
         url: '/addClass',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/addClass.html',
                 controller: ClassListCtrl
             }
         }
-    }).state('addStudent', {
+    }).state('index.addStudent', {
         url: '/addStudent',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/addStudent.html',
                 controller: AddStudentCtrl
             }
@@ -221,84 +224,76 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
                 controller: RegisterCtrl
             }
         }
-    }).state('addHomework_2', {
+    }).state('index.addHomework_2', {
         url: '/addHomework_2',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/addHomework_2.html',
                 controller: ClassListCtrl
             }
         }
-    }).state('detailStudent', {
+    }).state('index.detailStudent', {
         url: '/detailStudent',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/detailStudent.html',
                 controller: StudentDetailCtrl
             }
         }
-    }).state('detailClass', {
+    }).state('index.detailClass', {
         url: '/detailClass',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/detailClass.html',
                 controller: DetailClassCtrl
             }
         }
-    }).state('studentAnalysisson', {
+    }).state('index.studentAnalysisson', {
         url: '/studentAnalysisson',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/studentAnalysisson.html',
                 controller: StudentCtrl
             }
         }
-    }).state('upload', {
+    }).state('index.upload', {
         url: '/upload',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'upload/index.html',
             }
         }
-    }).state('checkhomework', {
+    }).state('index.checkhomework', {
         url: '/checkhomework',
         params: {
             'uid': null,
         },
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/checkhomework.html',
                 controller: CheckHomeworkCtrl
             }
         }
-    }).state('homeworkPreview', {
+    }).state('index.homeworkPreview', {
         url: '/homeworkPreview',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/homeworkPreview.html',
                 controller: HomeworkPreviewCtrl
             }
         }
-    }).state('homeworkPreview2', {
+    }).state('index.homeworkPreview2', {
         url: '/homeworkPreview2',
         views: {
-            '': {
+            'content@index': {
                 templateUrl: 'partials/homeworkPreview2.html',
                 controller: AssignmentCtrl
             }
         }
-    }).state('record', {
-        url: '/record',
-        views: {
-            '': {
-                templateUrl: 'partials/record.html',
-                controller: RecordCtrl
-            }
-        }
-    }).state('questionList',{
+    }).state('index.questionList',{
         url:'/questionList',
         views:{
-            '':{
+            'content@index':{
                 templateUrl:'partials/questionList.html',
                 controller:QuestionCtrl
             }

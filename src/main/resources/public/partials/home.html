@@ -1,10 +1,20 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>$Title$</title>
-</head>
-<body>
-$END$
-</body>
-</html>
+<div class="wrapper" style="position: absolute;width: 100%">
+    <div ui-view="navbar-header"></div>
+    <div ui-view="navbar-aside"></div>
+    <div class="content-wrapper" style="">
+        <!-- Content Header (Page header) -->
+        <section class="content-header">
+
+        </section>
+
+        <!-- Main content -->
+        <section class="content">
+
+            <div ui-view="content"></div>
+
+        </section>
+        <!-- /.content -->
+    </div>
+    <!--<div class="control-sidebar-bg"></div>-->
+
+</div>

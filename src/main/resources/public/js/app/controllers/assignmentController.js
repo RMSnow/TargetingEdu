@@ -107,7 +107,7 @@ function PrepareLessonCtrl($scope, $http, $state) {
     });
     $scope.getHomeworks = function (uid) {
         localStorage.setItem("assignmentUid", uid);
-        $state.go("checkhomework");
+        $state.go("index.checkhomework");
 
     };
 }
@@ -143,13 +143,13 @@ function AssignmentCtrl($scope, $http, $state) {
 
     $scope.getSubmitHomeworks = function (uid) {
         localStorage.setItem("currentAssignmentUid", uid);
-        $state.go("checkhomework");
+        $state.go("index.checkhomework");
 
     }
     $scope.getQuestions=function (assignmentUid) {
         localStorage.setItem("Uid",assignmentUid);
 
-        $state.go("questionList");
+        $state.go("index.questionList");
     }
 }
 function QuestionCtrl($scope,$http,$state){
@@ -192,7 +192,7 @@ function CheckHomeworkCtrl($scope, $http, $state, $stateParams) {
         localStorage.setItem("submitHomeworkUid", uid);
 
 
-        $state.go("check");
+        $state.go("index.check");
     }
 
 }
@@ -280,7 +280,7 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
 
             //保存成功后更新数据
             alert("提交成功!");
-            $state.go('checkhomework', {uid: submitHomeworkUid});
+            $state.go('index.checkhomework', {uid: submitHomeworkUid});
         });
     }
 
@@ -337,7 +337,7 @@ function HomeworkPreviewCtrl($scope, $http, $state, $modal) {
 
             var message = response['message'];
             if (message == 'success') {
-                $state.go('assignment');
+                $state.go('index.assignment');
             }
 
 
@@ -370,7 +370,7 @@ function HomeworkPreviewCtrl($scope, $http, $state, $modal) {
                 if (response['code'] == 200) {
 
                     alert(response['content'])
-                    $state.go('assignment');
+                    $state.go('index.assignment');
 
                 }
             })

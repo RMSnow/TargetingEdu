@@ -33,7 +33,7 @@ $.AdminLTE = {};
  * Modify these options to suit your implementation
  */
 $.AdminLTE.options = {
-  //Add slimscroll to navbar menus
+  //Add slimscroll to main menus
   //This requires you to load the slimscroll plugin
   //in every page before app.js
   navbarMenuSlimscroll: true,
@@ -171,9 +171,9 @@ $(function () {
     $.AdminLTE.controlSidebar.activate();
   }
 
-  //Add slimscroll to navbar dropdown
+  //Add slimscroll to main dropdown
   if (o.navbarMenuSlimscroll && typeof $.fn.slimscroll != 'undefined') {
-    $(".navbar .menu").slimscroll({
+    $(".main .menu").slimscroll({
       height: o.navbarMenuHeight,
       alwaysVisible: false,
       size: o.navbarMenuSlimscrollWidth
