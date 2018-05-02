@@ -1,47 +1,47 @@
 <div class="row ">
 
-    <div class="col-md-2">
+    <!--<div class="col-md-2">-->
 
-        <div class="box box-solid">
-            <div class="box-header with-border">
-                <h3 class="box-title">题型</h3>
+        <!--<div class="box box-solid">-->
+            <!--<div class="box-header with-border">-->
+                <!--<h3 class="box-title">题型</h3>-->
 
-                <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body no-padding">
-                <ul class="nav nav-pills nav-stacked" ng-repeat="type in typelist">
-                    <li><a href=""><i class="fa fa-inbox"></i> {{type}}
-                    </a></li>
-                </ul>
+                <!--<div class="box-tools">-->
+                    <!--<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="box-body no-padding">-->
+                <!--<ul class="nav nav-pills nav-stacked" ng-repeat="type in typelist">-->
+                    <!--<li><a href=""><i class="fa fa-inbox"></i> {{type}}-->
+                    <!--</a></li>-->
+                <!--</ul>-->
 
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /. box -->
-        <div class="box box-solid">
-            <div class="box-header with-border">
-                <h3 class="box-title">标记</h3>
+            <!--</div>-->
+            <!--&lt;!&ndash; /.box-body &ndash;&gt;-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /. box &ndash;&gt;-->
+        <!--<div class="box box-solid">-->
+            <!--<div class="box-header with-border">-->
+                <!--<h3 class="box-title">标记</h3>-->
 
-                <div class="box-tools">
-                    <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                    </button>
-                </div>
-            </div>
-            <div class="box-body no-padding">
-                <ul class="nav nav-pills nav-stacked">
-                    <li><a href="#"><i class="fa fa-circle-o text-red"></i> 错误点</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-yellow"></i> 加分点</a></li>
-                    <li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> 已收藏</a></li>
-                </ul>
-            </div>
-        </div>
-        <!-- /.box -->
-    </div>
+                <!--<div class="box-tools">-->
+                    <!--<button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>-->
+                    <!--</button>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="box-body no-padding">-->
+                <!--<ul class="nav nav-pills nav-stacked">-->
+                    <!--<li><a href="#"><i class="fa fa-circle-o text-red"></i> 错误点</a></li>-->
+                    <!--<li><a href="#"><i class="fa fa-circle-o text-yellow"></i> 加分点</a></li>-->
+                    <!--<li><a href="#"><i class="fa fa-circle-o text-light-blue"></i> 已收藏</a></li>-->
+                <!--</ul>-->
+            <!--</div>-->
+        <!--</div>-->
+        <!--&lt;!&ndash; /.box &ndash;&gt;-->
+    <!--</div>-->
 
-    <div class="col-md-10">
+    <div class="col-md-12">
 
         <div class="box-body no-padding">
 
@@ -83,37 +83,52 @@
                                                 function gradeChange() {
                                                     var objS = document.getElementById("pid");
                                                     var grade = objS.options[objS.selectedIndex].value;
-                                                    if (grade == "1") document.getElementById("tmp").value = "完成的非常出色！";
-                                                    if (grade == "2") document.getElementById("tmp").value = "逻辑很清晰，有条理，希望接着努力！";
-                                                    if (grade == "3") document.getElementById("tmp").value = "如果你细心一些会有更好的成绩！";
-                                                    if (grade == "4") document.getElementById("tmp").value = "有些地方有待加强，希望继续努力！！";
-                                                    if (grade == "5") document.getElementById("tmp").value = "如果你认真思考会有更好的成绩！";
-                                                    if (grade == "6") document.getElementById("tmp").value = "很多地方有待加强，希望继续努力！";
-                                                    if (grade == "7") document.getElementById("tmp").value = "完成得十分有待加强，希望下次更加努力！";
-                                                    if (grade == "8") document.getElementById("tmp").value = "希望能重新完成！";
-                                                    if (grade == "9") document.getElementById("tmp").value = "";
+//                                                    if (grade == "1") document.getElementById("tmp").value = "完成的非常出色！";
+//                                                    if (grade == "2") document.getElementById("tmp").value = "逻辑很清晰，有条理，希望接着努力！";
+//                                                    if (grade == "3") document.getElementById("tmp").value = "如果你细心一些会有更好的成绩！";
+//                                                    if (grade == "4") document.getElementById("tmp").value = "有些地方有待加强，希望继续努力！！";
+//                                                    if (grade == "5") document.getElementById("tmp").value = "如果你认真思考会有更好的成绩！";
+//                                                    if (grade == "6") document.getElementById("tmp").value = "很多地方有待加强，希望继续努力！";
+//                                                    if (grade == "7") document.getElementById("tmp").value = "完成得十分有待加强，希望下次更加努力！";
+//                                                    if (grade == "8") document.getElementById("tmp").value = "希望能重新完成！";
+//                                                    if (grade == "9") document.getElementById("tmp").value = "";
+
+                                                    if (grade == "1") $("#tmp").val("完成的非常出色！");
+                                                    if (grade == "2") $("#tmp").val("逻辑很清晰，有条理，希望接着努力！");
+                                                    if (grade == "3") $("#tmp").val("如果你细心一些会有更好的成绩！");
+                                                    if (grade == "4") $("#tmp").val("有些地方有待加强，希望继续努力！！");
+                                                    if (grade == "5") $("#tmp").val("如果你认真思考会有更好的成绩！");
+                                                    if (grade == "6") $("#tmp").val("很多地方有待加强，希望继续努力！");
+                                                    if (grade == "7") $("#tmp").val("完成得十分有待加强，希望下次更加努力！");
+                                                    if (grade == "8") $("#tmp").val("希望能重新完成！");
+                                                    if (grade == "9") $("#tmp").val("");
 
                                                 }
 
-                                                var btn = document.getElementById('btn');
-                                                document.getElementById("btn").onclick = function test() {
-                                                    document.getElementById("tmp").value = "";
-                                                }
+//                                                var btn = document.getElementById('btn');
+//                                                document.getElementById("btn").onclick = function test() {
+//                                                    document.getElementById("tmp").value = "";
+//                                                }
 
                                             </script>
                                         </div>
                                     </div>
                                     <div class="col-md-3 pull-right">
                                         <button class="btn btn-block btn-primary btn-sm active pull-right" id="btn"
-                                                onclick="test()">
-                                            修改评语
+                                                onclick="saveComment()">
+                                            保存评语
                                         </button>
                                         <script>
-                                            jQuery(document).ready(function () {
-
-                                                $(".rating-kv").rating();
-
-                                            });
+                                            function saveComment() {
+                                                $("#btn").click(function () {
+                                                    info.comment=$("#tmp").val();
+                                                });
+                                            }
+//                                            jQuery(document).ready(function () {
+//
+//                                                $(".rating-kv").rating();
+//
+//                                            });
                                         </script>
                                     </div>
                                 </div>
@@ -173,7 +188,7 @@
                                                 <button type="button" class="btn btn-group-sm btn-default">总分:100
                                                 </button>
                                                 <button type="button" class="btn btn-group-sm btn-default">
-                                                    姓名:{{info.studentID}}(学号:{{info.studentID}})
+                                                    姓名:{{info.studentName}}(学号:{{info.studentUid}})
                                                 </button>
                                             </div>
                                         </div>
@@ -227,15 +242,54 @@
                                                                 <div class="  form-group">
                                                                     {{$index+1}}
 
-                                                                    <label><input type="radio" name={{question.number}} ng-click="right($index+1)" value="1"/> 对</label>
-                                                                    <label> <input type="radio"  name={{question.number}}  ng-click="wrong($index+1)" value="0"/> 错</label>
+                                                                    <label><input type="radio" class="r-wbutton" name={{question.number}}
+                                                                                  ng-click="right($index+1)" value="1"/>
+                                                                        对</label>
+                                                                    <label><input type="radio" class="r-wbutton" name={{question.number}}
+                                                                                   ng-click="wrong($index+1)"
+                                                                                   value="0"/> 错</label>
 
                                                                 </div>
                                                                 <script type="text/javascript">
 
+
                                                                     $(function () {
                                                                         var chkItem = $('input[name=chkItem]');
                                                                         chkItem.click(function () {
+                                                                            $('#sumid').html(sum());
+                                                                        });
+                                                                    });
+//
+//                                                                    /**
+//                                                                     *@功能 计算总和
+//                                                                     *@param null
+//                                                                     *@return int
+//                                                                     **/
+//                                                                    function sum() {
+//                                                                        var valueArr = $('input[name=chkItem]');
+//                                                                        var sumValue = 0;
+//                                                                        valueArr.each(function (index, element) {
+//                                                                            if ($(this).is(":checked")) {
+//                                                                                if (isNaN(valueArr[index].value) || valueArr[index].value == null || valueArr[index].value == "") {
+//                                                                                    sumValue += 0;
+//                                                                                } else {
+//                                                                                    sumValue += parseFloat(valueArr[index].value);//强制转换为数字
+//                                                                                }
+//
+//                                                                            }
+//                                                                        });
+//
+//                                                                        if (sumValue > 0) {
+//                                                                            sumValue = parseInt(sumValue);
+//                                                                        }
+//                                                                        else {
+//                                                                            sumValue = 0;
+//                                                                        }
+//                                                                        return sumValue;
+//                                                                    }
+                                                                    $(function () {
+                                                                        var chkItem = $('.r-wbutton');
+                                                                        chkItem.click(function() {
                                                                             $('#sumid').html(sum());
                                                                         });
                                                                     });
@@ -246,10 +300,11 @@
                                                                      *@return int
                                                                      **/
                                                                     function sum() {
-                                                                        var valueArr = $('input[name=chkItem]');
+                                                                        var valueArr = $('.r-wbutton');
                                                                         var sumValue = 0;
                                                                         valueArr.each(function (index, element) {
                                                                             if ($(this).is(":checked")) {
+                                                                                console.log(valueArr[index],element);
                                                                                 if (isNaN(valueArr[index].value) || valueArr[index].value == null || valueArr[index].value == "") {
                                                                                     sumValue += 0;
                                                                                 } else {
