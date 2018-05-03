@@ -266,13 +266,32 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
     $scope.info = {};
     $scope.info.uid = submitHomeworkUid;
 
+    $scope.scoreCentesimal=0;
+    var updateScore=function () {
+        score=calScore();
+        localStorage.setItem("score",score);
+        $scope.scoreCentesimal=score;
+    }
+    var calScore=function () {
+        score=0;
+        for(j=0,len=checks.length;j<len;j++){
+            if (checks[j]==1) score=score+1;
+        }
+        return score;
+    };
+    $scope.getScoreCentesimal=function () {
+        return localStorage.getItem("score")/checks.length.toFixed(1)*100;
+    };
+
 
     $scope.save = function () {
         $scope.info.checkResult = localStorage.getItem("checks");
+        $scope.info.score=calScore();
+
         $http({
 
             url: 'submitHomework/check',
-            method: 'post',
+            method: 'POST',
             data: $scope.info
         }).success(function (x) {
             localStorage.removeItem("checks");
@@ -286,16 +305,18 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
 
     var checks = new Array();
 
-
     $scope.right = function (order) {
         checks[order - 1] = 1;
+
         localStorage.setItem("checks", JSON.stringify(checks));
+        updateScore();
         console.log(JSON.parse(localStorage.getItem("checks")));
 
     }
     $scope.wrong = function (order) {
         checks[order - 1] = 0;
 
+        updateScore();
         localStorage.setItem("checks", JSON.stringify(checks));
         console.log(JSON.parse(localStorage.getItem("checks")));
 
