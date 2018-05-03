@@ -23,9 +23,7 @@ function LoginCtrl($scope, $http, $state) {
 
                 localStorage.setItem("token", "Bearer " + content)
                 console.log("whole token： " + localStorage.getItem("token"))
-
-
-                $state.go('index');
+                $state.go("index",{},{reload:true});
             }
 
         }).error(function (response) {

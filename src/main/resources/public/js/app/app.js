@@ -105,6 +105,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
     $urlRouterProvider.otherwise('/login');
     $stateProvider.state('index', {
         url: '/index',
+        cache:false,
         views: {
             '': {
                 templateUrl: 'partials/home.html',
@@ -117,9 +118,25 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
                 templateUrl:'partials/main/navbar-aside.html',
             },
             'content@index':{
-                templateUrl:'partials/classlist.html',
+                templateUrl:'partials/main.html',
                 controller:ClassListCtrl
             },
+        }
+    }).state('test', {
+        url: '/test',
+        views: {
+            '': {
+                templateUrl: 'partials/test.html',
+            }
+
+        }
+    }).state('index.classlist', {
+        url: '/classlist',
+        views: {
+            'content@index': {
+                templateUrl: 'partials/classlist.html',
+                controller: ClassListCtrl
+            }
 
         }
     }).state('index.class', {

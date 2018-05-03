@@ -2,6 +2,7 @@ function ClassListCtrl($scope, $http, $state) {
     $scope.currentPage = 1;
     $scope.numPerPage = 10;
     $scope.maxSize = 5;
+    // $scope.teacher=localStorage.getItem('')
     var getClassList = function () {
         $http({
             url: "teacher/findPageClass",
@@ -157,6 +158,55 @@ function ClassListCtrl($scope, $http, $state) {
             $scope.rows = rows;
         });
     };
+
+    $scope.getStudents = function (id) {
+
+        localStorage.setItem("class_id",id);
+
+        $scope.currentPage = 1;//当前页
+        $scope.numPerPage = 10;//每页显示1条数据
+        $scope.maxSize = 5;
+        $http({
+            url: "class/findPageStudentsByClassNumber",
+            method: 'get',
+            params: {
+                currentPage: $scope.currentPage-1,
+                numPerPage: $scope.numPerPage,
+                stuclass: id
+            }
+        }).success(function (response) {
+            sessionStorage.setItem("class_id", id);
+            $scope.TotalItems = response.totalElements;
+            $scope.items = response.content;
+            $(".box box-primary").attr('id', id);
+        })
+
+        $scope.pageChanged = function () {
+            var id = sessionStorage.getItem("class_id");
+            $http({
+                url: "class/findPageStudentsByClassNumber",
+                method: 'get',
+                params: {
+                    currentPage: $scope.currentPage - 1,
+                    numPerPage: $scope.numPerPage,
+                    stuclass: id
+                }
+            }).success(function (response) {
+                $scope.TotalItems = response.totalElements;
+                $scope.items = response.content;
+            }).error(function (response) {
+                $scope.error = "An error has occured!"
+                    + response.ExceptionMessage;
+            })
+
+        }
+
+    };
+
+    $scope.getStudentDetail = function (studentUid) {
+        localStorage.setItem("studentUid", studentUid);
+        $state.go("index.detailStudent");
+    }
 
 }
 

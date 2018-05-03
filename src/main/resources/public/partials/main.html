@@ -1,0 +1,122 @@
+<div class="row">
+<section class="content-header">
+    <h1>
+        我的班级
+        <small>Class controller</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="class1"><i class="fa fa-dashboard"></i> 班级管理</a></li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-lg-3 col-xs-6" ng-repeat=" x in classes">
+            <!-- small box -->
+            <div class="small-box bg-primary">
+                <div class="inner">
+                    <h3>{{x.title}}</h3>
+
+                    <p>{{x.stu_count}}</p>
+                </div>
+                <div class="icon">
+                    <i class="ion ion-person" data-ng-click="viewDetail(x.classUid)"></i>
+                </div>
+                <a ng-click="getStudents(x.classUid)" class="small-box-footer">More info <i class="fa fa-arrow-circle-right" ></i></a>
+            </div>
+        </div>
+    </div>
+</section>
+</div>
+<div class="row">
+<section class="content-header">
+    <h1>
+        班级成员
+        <small>Student controller</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="class1"><i class="fa fa-dashboard"></i> 班级成员列表</a></li>
+    </ol>
+</section>
+<section class="content">
+        <div class="col-md-12">
+            <div class="box box-primary" id="">
+                <div class="box-header with-border">
+                    <h3 class="box-title">班级人员</h3>
+
+                    <div class="box-tools pull-right">
+
+
+                        <div class="has-feedback">
+                            <!--<input type="text" class="form-control input-sm" placeholder="Search Mail">-->
+                            <!--<span class="glyphicon glyphicon-search form-control-feedback"></span>-->
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
+                            </button>
+                        </div>
+
+                    </div>
+                    <!-- /.box-tools -->
+                </div>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                            <tr>
+                                <th class="text-center"><input type="checkbox"
+                                                               data-ng-model="allChecked"
+                                                               data-ng-change="checkAll(allChecked)"/></th>
+                                <th>姓名</th>
+                                <th>学号</th>
+                                <th>年级</th>
+                                <th>家长电话</th>
+                                <th>家长微信</th>
+                                <th>操作</th>
+                            </tr>
+
+                            <tr ng-repeat=" x in items">
+                                <!--<td><input type="checkbox"></td>-->
+                                <td class="text-center"><input type="checkbox"
+                                                               data-ng-model="x.$checked"
+                                                               ng-checked="isSelected(x.id)"
+                                                               data-ng-changed="checkedChange(x.id,x.$checked)"/></td>
+                                <td>{{x.name}}</td>
+                                <td>{{x.studentNumber}}</td>
+                                <td>{{x.grade}}</td>
+                                <td>{{x.parentTel}}</td>
+                                <td>{{x.parentWechat}}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-sm btn-primary"
+                                            ng-click="getStudentDetail(x.studentUid)">详情
+                                    </button>
+                                </td>
+                            </tr>
+
+                            </tbody>
+                        </table>
+
+                        <!-- /.table -->
+                    </div>
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer no-padding">
+                    <div class="mailbox-controls">
+
+
+                        <div class="pull-right">
+                            <pagination class="pagination-sm" total-items="TotalItems" ng-model="currentPage"
+                                        items-per-page="numPerPage" max-size="maxSize"
+                                        first-text="首页" previous-text="上一页" next-text="下一页" last-text="尾页"
+                                        boundary-links="true"
+                                        ng-change="pageChanged()" num-pages="totalPages"
+                                        force-ellipses="false"></pagination>
+                        </div>
+                        <!-- /.pull-right -->
+                    </div>
+                </div>
+            </div>
+            <!-- /. box -->
+        </div>
+</section>
+</div>
