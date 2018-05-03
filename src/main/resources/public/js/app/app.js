@@ -197,7 +197,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
         url: '/addHomework',
         views: {
             'content@index': {
-                templateUrl: 'partials/addHomework.html',
+                templateUrl: 'partials/assignment/addHomework.html',
                 controller: AddHomeworkCtrl
             }
         }
@@ -295,7 +295,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
         url: '/homeworkPreview',
         views: {
             'content@index': {
-                templateUrl: 'partials/homeworkPreview.html',
+                templateUrl: 'partials/assignment/homeworkPreview.html',
                 controller: HomeworkPreviewCtrl
             }
         }

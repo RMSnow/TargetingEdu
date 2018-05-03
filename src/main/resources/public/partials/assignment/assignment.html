@@ -1,114 +1,126 @@
-<!-- Content Header (Page header) -->
-<section class="content-header">
-    <h1>
-        作业布置
-        <!--<small>作业的私人订制</small>-->
-    </h1>
-</section>
+<div class="row">
+    <section class="content-header">
+        <h1>
+            全面检测
+            <small>For Classes</small>
+        </h1>
+        <!--<ol class="breadcrumb">-->
+            <!--<li><a ui-sref="class1"><i class="fa fa-dashboard"></i> 班级管理</a></li>-->
+        <!--</ol>-->
+    </section>
+    <section class="content">
+        <div class="row">
+            <div class="col-lg-3 col-xs-6" ng-repeat=" x in classes">
+                <!-- small box -->
+                <div class="small-box bg-primary">
+                    <div class="inner">
+                        <h3>{{x.title}}</h3>
 
-<!-- Main content -->
-<section class="content">
-    <!--<h2 class="page-header">全面检测</h2>-->
-
-    <div class="row">
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <i class="fa fa-tags"></i>
-
-                <h2 class="box-title">全面检测</h2>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                    </button>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                        <p>{{x.stu_count}}</p>
                     </div>
-                    <!-- /.btn-group -->
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
+                    <div class="icon">
 
-                    <div class="pull-right">
-                        1-50/200
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i>
+                        <!--TODO: 页面跳转（传入classUid）-->
+
+                        <!--<i class="ion ion-person" data-ng-click="viewDetail(x.classUid)"></i>-->
+                        <i class="ion ion-person" ui-sref="index.addHomework"></i>
+                    </div>
+                    <a ng-click="getStudents(x.classUid)" class="small-box-footer">Assignment<i class="fa fa-arrow-circle-right" ></i></a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<div class="row">
+    <section class="content-header">
+        <h1>
+            精准训练
+            <small>For Students</small>
+        </h1>
+        <!--<ol class="breadcrumb">-->
+            <!--<li><a ui-sref="class1"><i class="fa fa-dashboard"></i> 班级成员列表</a></li>-->
+        <!--</ol>-->
+    </section>
+    <section class="content">
+        <div class="col-md-12">
+            <div class="box box-primary" id="">
+                <div class="box-header with-border">
+                    <!--<h3 class="box-title">精准训练</h3>-->
+
+                    <div class="box-tools pull-right">
+
+
+                        <div class="has-feedback">
+                            <!--<input type="text" class="form-control input-sm" placeholder="Search Mail">-->
+                            <!--<span class="glyphicon glyphicon-search form-control-feedback"></span>-->
+                            <button type="button" class="btn btn-box-tool" data-widget="collapse"><i
+                                    class="fa fa-minus"></i>
                             </button>
                         </div>
-                        <!-- /.btn-group -->
+
                     </div>
-                    <!-- /.pull-right -->
+                    <!-- /.box-tools -->
                 </div>
-                <div class="table-responsive mailbox-messages">
-                    <table class="table table-hover table-striped">
-                        <tbody>
-                        <tr>
-                            <th></th>
+                <!-- /.box-header -->
+                <div class="box-body no-padding">
+                    <div class="table-responsive mailbox-messages">
+                        <table class="table table-hover table-striped">
+                            <tbody>
+                            <tr>
+                                <th class="text-center"><input type="checkbox"
+                                                               data-ng-model="allChecked"
+                                                               data-ng-change="checkAll(allChecked)"/></th>
+                                <th>姓名</th>
+                                <th>学号</th>
+                                <th>年级</th>
+                                <th>家长电话</th>
+                                <th>家长微信</th>
+                                <th>操作</th>
+                            </tr>
 
-                            <th>班级</th>
-                            <th>学生人数</th>
-                            <th>操作</th>
-                        </tr>
+                            <tr ng-repeat=" x in items">
+                                <!--<td><input type="checkbox"></td>-->
+                                <td class="text-center"><input type="checkbox"
+                                                               data-ng-model="x.$checked"
+                                                               ng-checked="isSelected(x.id)"
+                                                               data-ng-changed="checkedChange(x.id,x.$checked)"/></td>
+                                <td>{{x.name}}</td>
+                                <td>{{x.studentNumber}}</td>
+                                <td>{{x.grade}}</td>
+                                <td>{{x.parentTel}}</td>
+                                <td>{{x.parentWechat}}</td>
+                                <td>
+                                    <button type="submit" class="btn btn-sm btn-primary"
+                                            ng-click="getStudentDetail(x.studentUid)">详情
+                                    </button>
+                                </td>
+                            </tr>
 
-                        </tbody>
-                    </table>
-                    <!-- /.table -->
-                </div>
-                <!-- /.mail-box-messages -->
-            </div>
-            <!-- /.box-body -->
-        </div>
-        <!-- /.box -->
-    </div>
+                            </tbody>
+                        </table>
 
-    <!--<h2 class="page-header">精准训练</h2>-->
-
-    <div class="row">
-        <div class="box box-default">
-            <div class="box-header with-border">
-                <i class="fa fa-tags"></i>
-
-                <h2 class="box-title">精准训练</h2>
-            </div>
-            <!-- /.box-header -->
-            <div class="box-body">
-                <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                    </button>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
+                        <!-- /.table -->
                     </div>
-                    <!-- /.btn-group -->
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
+                    <!-- /.mail-box-messages -->
+                </div>
+                <!-- /.box-body -->
+                <div class="box-footer no-padding">
+                    <div class="mailbox-controls">
 
-                    <div class="pull-right">
-                        1-50/200
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i>
-                            </button>
+
+                        <div class="pull-right">
+                            <pagination class="pagination-sm" total-items="TotalItems" ng-model="currentPage"
+                                        items-per-page="numPerPage" max-size="maxSize"
+                                        first-text="首页" previous-text="上一页" next-text="下一页" last-text="尾页"
+                                        boundary-links="true"
+                                        ng-change="pageChanged()" num-pages="totalPages"
+                                        force-ellipses="false"></pagination>
                         </div>
-                        <!-- /.btn-group -->
+                        <!-- /.pull-right -->
                     </div>
-                    <!-- /.pull-right -->
                 </div>
-                <!-- /.mail-box-messages -->
             </div>
-            <!-- /.box-body -->
+            <!-- /. box -->
         </div>
-        <!-- /.box -->
-    </div>
-
-
-</section>
-<!-- /.content -->
+    </section>
+</div>
