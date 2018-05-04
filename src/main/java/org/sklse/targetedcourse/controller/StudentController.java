@@ -17,9 +17,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.*;
 
-/**
- * Created by guolanqing on 2017/4/6.
- */
 @RequestMapping("student")
 @RestController
 public class StudentController {
@@ -51,7 +48,6 @@ public class StudentController {
 
         Guardian guardian = userService.currentGuardian(request);
         Student student = studentRepository.findByStudentUid(guardian.getCurrentChildUid());
-
 
 
         SubmittedHomework dbSubmittedHomework = submittedHomeworkRepository.findByUid(submit.getUid());
@@ -96,7 +92,7 @@ public class StudentController {
 
     @ApiOperation(value = "根据submittedHomeworkUid查询单次作业")
     @GetMapping(value = "/queryBySubmitHomework")
-    public  ResponseEntity<ResultModel> queryBySubmitHomework(String submittedHomeworkUid, HttpServletRequest request) throws ServletException {
+    public ResponseEntity<ResultModel> queryBySubmitHomework(String submittedHomeworkUid, HttpServletRequest request) throws ServletException {
         Guardian guardian = userService.currentGuardian(request);
         Student student = studentRepository.findByStudentUid(guardian.getCurrentChildUid());
         SubmittedHomework submittedHomework = submittedHomeworkRepository.findByUid(submittedHomeworkUid);
@@ -138,7 +134,6 @@ public class StudentController {
         result.put("id", entity.getStudentUid());
         return result;
     }
-
 
 
     @ApiIgnore

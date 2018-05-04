@@ -2,8 +2,10 @@ package org.sklse.targetedcourse.service;
 
 
 import io.jsonwebtoken.Claims;
-import org.sklse.targetedcourse.bean.*;
-import org.sklse.targetedcourse.repository.*;
+import org.sklse.targetedcourse.bean.Guardian;
+import org.sklse.targetedcourse.bean.Teacher;
+import org.sklse.targetedcourse.repository.GuardianRepository;
+import org.sklse.targetedcourse.repository.TeacherRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -16,11 +18,11 @@ public class UserService {
 
 
     @Autowired
-    private  TeacherRepository teacherRepository;
+    private TeacherRepository teacherRepository;
     @Autowired
-    private   GuardianRepository guardianRepository;
+    private GuardianRepository guardianRepository;
 
-    public  Teacher currentTeacher(HttpServletRequest request) throws ServletException {
+    public Teacher currentTeacher(HttpServletRequest request) throws ServletException {
         Claims claims = (Claims) request.getAttribute("claims");
         String phoneNumber = (String) claims.get("sub");
         String role = (String) claims.get("roles");
@@ -33,10 +35,10 @@ public class UserService {
     }
 
 
-    public   Guardian currentGuardian(HttpServletRequest request) throws ServletException {
+    public Guardian currentGuardian(HttpServletRequest request) throws ServletException {
         Claims claims = (Claims) request.getAttribute("claims");
         String phoneNumber = (String) claims.get("sub");
-        System.out.println("phoneNumber: "+phoneNumber);
+        System.out.println("phoneNumber: " + phoneNumber);
         String role = (String) claims.get("roles");
         if (role.equals("guardian")) {
             return guardianRepository.findByPhoneNumber("22");

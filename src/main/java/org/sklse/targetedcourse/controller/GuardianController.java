@@ -18,9 +18,6 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * Created by MIC on 2017/7/19.
- */
 @RestController
 @RequestMapping("guardian")
 public class GuardianController {
@@ -44,44 +41,44 @@ public class GuardianController {
 
         Guardian guardian = userService.currentGuardian(request);
         if (student.getStudentUid() != null) {
-            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN,"禁止提交uid参数"), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "禁止提交uid参数"), HttpStatus.FORBIDDEN);
         }
 
 
         studentRepository.save(student);
         guardian.getStudents().add(student);
         guardianRepository.save(guardian);
-        return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK,"操作成功"), HttpStatus.OK);
+        return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK, "操作成功"), HttpStatus.OK);
     }
 
     @ApiOperation(value = "修改孩子信息")
     @RequestMapping(value = "/updateChild", method = RequestMethod.POST)
-    public ResponseEntity<ResultModel>  updateChild( Student student, HttpServletRequest request) throws ServletException {
+    public ResponseEntity<ResultModel> updateChild(Student student, HttpServletRequest request) throws ServletException {
         Guardian guardian = userService.currentGuardian(request);
         if (student == null || guardianService.isMyChild(guardian, student)) {
-            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN,"Failure"), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "Failure"), HttpStatus.FORBIDDEN);
         }
         studentRepository.save(student);
-        return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK,"操作成功"), HttpStatus.OK);
+        return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK, "操作成功"), HttpStatus.OK);
 
 
     }
 
     @ApiOperation(value = "删除孩子")
-    @RequestMapping(value = "deleteChild/{studentUid}",method = RequestMethod.DELETE)
-    public ResponseEntity<ResultModel> deleteChild(@PathVariable("studentUid")  String studentUid, HttpServletRequest request) throws Exception {
+    @RequestMapping(value = "deleteChild/{studentUid}", method = RequestMethod.DELETE)
+    public ResponseEntity<ResultModel> deleteChild(@PathVariable("studentUid") String studentUid, HttpServletRequest request) throws Exception {
 
         Guardian guardian = userService.currentGuardian(request);
 
         Student student = studentRepository.findByStudentUid(studentUid);
 
         if (!guardianService.isMyChild(guardian, student)) {
-            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN,"操作失败"), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "操作失败"), HttpStatus.FORBIDDEN);
         }
 
         guardian.getStudents().remove(student);
         studentRepository.delete(student);
-        return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK,"操作成功"), HttpStatus.OK);
+        return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK, "操作成功"), HttpStatus.OK);
 
 
     }
@@ -89,7 +86,7 @@ public class GuardianController {
 
     @ApiOperation(value = "孩子列表")
     @GetMapping(value = "/children")
-    public  List<Student> children(HttpServletRequest request) throws ServletException {
+    public List<Student> children(HttpServletRequest request) throws ServletException {
 
 
         Guardian guardian = userService.currentGuardian(request);
@@ -108,7 +105,7 @@ public class GuardianController {
 
         Student student = studentRepository.findByStudentUid(studentUid);
         if (!students.contains(student)) {
-            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN,"Failure"), HttpStatus.FORBIDDEN);
+            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "Failure"), HttpStatus.FORBIDDEN);
         }
         guardian.setCurrentChildUid(studentUid);
         guardianRepository.save(guardian);
@@ -127,7 +124,7 @@ public class GuardianController {
         Student student = studentRepository.findByStudentUid(studentUid);
 
         if (student == null) {
-            return new ResponseEntity<>(ResultModel.error(HttpStatus.NOT_FOUND,"Failure"), HttpStatus.NOT_FOUND);
+            return new ResponseEntity<>(ResultModel.error(HttpStatus.NOT_FOUND, "Failure"), HttpStatus.NOT_FOUND);
 
         }
         return new ResponseEntity<>(ResultModel.ok(student), HttpStatus.OK);

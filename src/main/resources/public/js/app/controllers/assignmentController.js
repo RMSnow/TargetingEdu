@@ -1,8 +1,3 @@
-
-
-
-
-
 function DetailClassCtrl($scope, $http) {
     var classUid = localStorage.getItem("classUid");
 
@@ -17,7 +12,6 @@ function DetailClassCtrl($scope, $http) {
         $scope.class = response;
     })
 }
-
 
 
 function AddHomeworkCtrl($scope, $http) {
@@ -44,13 +38,10 @@ function AddHomeworkCtrl($scope, $http) {
     };
 
     var search = function () {
-
         $http({
-
             url: 'question/getAllQuestions',
             method: 'get',
         }).success(function (response) {
-
             $scope.questions = response;
         })
     }
@@ -126,6 +117,16 @@ function AssignmentCtrl($scope, $http, $state) {
     }
     getClassList();
 
+    var getStudentList = function () {
+        $http({
+            url: "teacher/studentList",
+            method: "get",
+        }).success(function (response) {
+            $scope.students = response;
+        })
+    }
+    getStudentList();
+
     $scope.getHomeworkList = function (class_id) {
         $http({
             url: "class/getHomeworkList",
@@ -146,24 +147,24 @@ function AssignmentCtrl($scope, $http, $state) {
         $state.go("index.checkhomework");
 
     }
-    $scope.getQuestions=function (assignmentUid) {
-        localStorage.setItem("Uid",assignmentUid);
+    $scope.getQuestions = function (assignmentUid) {
+        localStorage.setItem("Uid", assignmentUid);
 
         $state.go("index.questionList");
     }
 }
-function QuestionCtrl($scope,$http,$state){
-    var Uid =localStorage.getItem("Uid");
+function QuestionCtrl($scope, $http, $state) {
+    var Uid = localStorage.getItem("Uid");
 
     $http({
-        url:"assignment/questions",
-        method:"get",
-        params:{
-            assignmentUid:Uid
+        url: "assignment/questions",
+        method: "get",
+        params: {
+            assignmentUid: Uid
         }
-    }).success(function(response){
-        if (response['code'] == 200){
-            $scope.questions=response['content'];
+    }).success(function (response) {
+        if (response['code'] == 200) {
+            $scope.questions = response['content'];
 
         }
     })
@@ -182,8 +183,6 @@ function CheckHomeworkCtrl($scope, $http, $state, $stateParams) {
             uid: currentAssignmentUid
         }
     }).success(function (response) {
-
-
         $scope.submitList = response;
     });
 
@@ -266,27 +265,27 @@ function CheckCtrl($scope, $http, $state, $stateParams) {
     $scope.info = {};
     $scope.info.uid = submitHomeworkUid;
 
-    $scope.scoreCentesimal=0;
-    var updateScore=function () {
-        score=calScore();
-        localStorage.setItem("score",score);
-        $scope.scoreCentesimal=score;
+    $scope.scoreCentesimal = 0;
+    var updateScore = function () {
+        score = calScore();
+        localStorage.setItem("score", score);
+        $scope.scoreCentesimal = score;
     }
-    var calScore=function () {
-        score=0;
-        for(j=0,len=checks.length;j<len;j++){
-            if (checks[j]==1) score=score+1;
+    var calScore = function () {
+        score = 0;
+        for (j = 0, len = checks.length; j < len; j++) {
+            if (checks[j] == 1) score = score + 1;
         }
         return score;
     };
-    $scope.getScoreCentesimal=function () {
-        return localStorage.getItem("score")/checks.length.toFixed(1)*100;
+    $scope.getScoreCentesimal = function () {
+        return localStorage.getItem("score") / checks.length.toFixed(1) * 100;
     };
 
 
     $scope.save = function () {
         $scope.info.checkResult = localStorage.getItem("checks");
-        $scope.info.score=calScore();
+        $scope.info.score = calScore();
 
         $http({
 
@@ -401,7 +400,7 @@ function HomeworkPreviewCtrl($scope, $http, $state, $modal) {
 
 function AssignmentModelCtrl($scope, $modalInstance) {
     $scope.assignment = {};
-    $scope.datepicker=function () {
+    $scope.datepicker = function () {
         $('#datetimepicker').datetimepicker({
             format: 'YYYY/MM/DD',
             locale: moment.locale('zh-cn')

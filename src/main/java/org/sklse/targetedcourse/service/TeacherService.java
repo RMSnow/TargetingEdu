@@ -1,9 +1,6 @@
 package org.sklse.targetedcourse.service;
 
-import org.hibernate.type.PrimitiveCharacterArrayClobType;
-import org.sklse.targetedcourse.bean.Guardian;
 import org.sklse.targetedcourse.bean.StuClass;
-import org.sklse.targetedcourse.bean.Student;
 import org.sklse.targetedcourse.bean.Teacher;
 import org.sklse.targetedcourse.repository.StuClassRepository;
 import org.sklse.targetedcourse.repository.TeacherRepository;
@@ -13,12 +10,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import javax.servlet.http.HttpSession;
 import java.util.List;
 
-/**
- * Created by Alison on 2017/4/15.
- */
+
 @Service
 public class TeacherService {
 
@@ -29,36 +23,34 @@ public class TeacherService {
     private StuClassRepository stuClassRepository;
 
 
-
     @Transactional
-    public Teacher findByUsername(String phoneNum){
+    public Teacher findByUsername(String phoneNum) {
         return teacherRepository.findByPhoneNumber(phoneNum);
     }
 
     @Transactional
-    public List<StuClass> findAllClassByStatus(int status){
+    public List<StuClass> findAllClassByStatus(int status) {
         return stuClassRepository.findAllByStatus(status);
     }
 
 
-
     @Transactional
-    public Page<StuClass> findAll(Pageable pageable){
+    public Page<StuClass> findAll(Pageable pageable) {
         return stuClassRepository.findAll(pageable);
     }
 
     @Transactional
-    public void save(Teacher teacher){
+    public void save(Teacher teacher) {
         teacherRepository.save(teacher);
     }
 
-    public Teacher findByPhoneNum(String phoneNumber){
+    public Teacher findByPhoneNum(String phoneNumber) {
         return teacherRepository.findByPhoneNumber(phoneNumber);
     }
 
 
-    public  boolean isMyClass(Teacher teacher, StuClass stuClass){
-        if (teacher.getStuClasses().contains(stuClass)){
+    public boolean isMyClass(Teacher teacher, StuClass stuClass) {
+        if (teacher.getStuClasses().contains(stuClass)) {
             return true;
         }
         return false;

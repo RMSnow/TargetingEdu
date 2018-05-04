@@ -6,9 +6,6 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by Alison on 2017/4/13.
- */
 @Entity
 @Table(name = "class")
 public class StuClass {
@@ -61,9 +58,6 @@ public class StuClass {
 
     @OneToMany
     private List<Student> students;
-
-
-
 
     @OneToMany
     private List<Assignment> assignmentList;

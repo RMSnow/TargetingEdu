@@ -181,7 +181,7 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
         url: '/assignment',
         views: {
             'content@index': {
-                templateUrl: 'partials/assignment/assignment.html',
+                templateUrl: 'partials/assignment/assignment_old.html',
                 controller: AssignmentCtrl
             }
         }
