@@ -8,13 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-/**
- * Created by Alison on 2017/4/13.
- */
-
-
 public interface StuClassRepository extends JpaRepository<StuClass, String> {
-
 
     StuClass findByClassUid(String classUid);
 
@@ -31,11 +25,11 @@ public interface StuClassRepository extends JpaRepository<StuClass, String> {
 
 
     Page<StuClass> findAllByStatus(int status, Pageable pageable);
-    @Query(value = "select c.* from class c where c.class_uid in (select stu_classes_class_uid from teacher_stu_classes where teacher_id=?1 )"+"order by c.class_uid \n#pageable\n",
-            countQuery="select count(*) from teacher_stu_classes where teacher_id=?1",
-            nativeQuery=true)
-    public Page<StuClass> find(long teacher_id, Pageable pageable);
 
+    @Query(value = "select c.* from class c where c.class_uid in (select stu_classes_class_uid from teacher_stu_classes where teacher_id=?1 )" + "order by c.class_uid \n#pageable\n",
+            countQuery = "select count(*) from teacher_stu_classes where teacher_id=?1",
+            nativeQuery = true)
+    public Page<StuClass> find(long teacher_id, Pageable pageable);
 
 
 }

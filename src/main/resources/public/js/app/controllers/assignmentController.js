@@ -127,6 +127,17 @@ function AssignmentCtrl($scope, $http, $state) {
     }
     getStudentList();
 
+    //TODO：进入界面并存储class_id信息
+    $scope.goAddHomework = function (class_id) {
+        localStorage.setItem("class_id", class_id);
+        $state.go("index.addHomework")
+    }
+
+    $scope.goStudentAddHomework = function (student_id) {
+        localStorage.setItem("student_id", student_id);
+        $state.go("index.addHomework")
+    }
+
     $scope.getHomeworkList = function (class_id) {
         $http({
             url: "class/getHomeworkList",
@@ -137,16 +148,14 @@ function AssignmentCtrl($scope, $http, $state) {
         }).success(function (response) {
             $scope.hwList = response['content'];
             localStorage.setItem("class_id", class_id);
-
-
         })
     }
 
     $scope.getSubmitHomeworks = function (uid) {
         localStorage.setItem("currentAssignmentUid", uid);
         $state.go("index.checkhomework");
-
     }
+
     $scope.getQuestions = function (assignmentUid) {
         localStorage.setItem("Uid", assignmentUid);
 
@@ -337,9 +346,12 @@ function HomeworkPreviewCtrl($scope, $http, $state, $modal) {
         }
     }).success(function (response) {
         $scope.questions = response;
-
     })
+
     class_id = localStorage.getItem("class_id")
+    //TODO:注：之前需要存储这个
+    student_id = localStorage.getItem("student_id")
+
     $scope.saveHomework = function () {
         $http({
             url: "assignment/addAssignment",
@@ -371,27 +383,26 @@ function HomeworkPreviewCtrl($scope, $http, $state, $modal) {
             scope: $scope
         });
 
-
         modalInstance.result.then(function (result) {
             result.classList = class_id;
+            //TODO: 取student-id
+            result.studentList = student_id;
             result.questionList = storedQuestions;
             $http({
                 url: "assignment/teacher/release",
                 method: "POST",
                 params: result
-
-
             }).success(function (response) {
-
                 console.log("response: " + response);
-
                 localStorage.removeItem("selectQuestions");
 
-                if (response['code'] == 200) {
+                //TODO： remove？
+                localStorage.removeItem("class_id");
+                localStorage.removeItem("student_id");
 
+                if (response['code'] == 200) {
                     alert(response['content'])
                     $state.go('index.assignment');
-
                 }
             })
         });

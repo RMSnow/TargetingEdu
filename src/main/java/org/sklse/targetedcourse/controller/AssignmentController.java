@@ -13,15 +13,12 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
 import java.util.Date;
 import java.util.List;
 
 @RestController
 @RequestMapping("assignment")
 public class AssignmentController {
-
-
 
     @Autowired
     private AssignmentRepository assignmentRepository;
@@ -49,10 +46,7 @@ public class AssignmentController {
     @PostMapping(value = "/teacher/release")
     public ResponseEntity<ResultModel> release(Assignment assignment, HttpServletRequest request) throws ServletException {
         Teacher teacher = userService.currentTeacher(request);
-
-
-
-//        Assignment相关
+        //Assignment相关
         assignment.setTeacherUid(teacher.getId());
         assignment.setCreateTime(new Date());
 
@@ -61,33 +55,131 @@ public class AssignmentController {
 
         teacher.getAssignments().add(assignment);
 
-
         String classUidList = assignment.getClassList();
-        if (classUidList == null) {
-            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "班级列表为空"), HttpStatus.FORBIDDEN);
+        //TODO：为单个学生发布作业
+        String studentUidList = assignment.getStudentList();
+
+        if (classUidList == null && studentUidList != null) {
+            //for student
+            String[] studentList = ListParse.stringToArray(studentUidList);
+            return releaseForStudent(studentList, assignment);
         }
 
+        if (classUidList != null && studentUidList == null) {
+            //for class
+            String[] classList = ListParse.stringToArray(classUidList);
+            return releaseForClass(classList, assignment);
+        }
 
-        String[] classList = ListParse.stringToArray(classUidList);
+        return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "班级与学生列表均为空"), HttpStatus.FORBIDDEN);
 
-//        发布到每个学生
+//        if (classUidList == null) {
+//            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "班级列表为空"), HttpStatus.FORBIDDEN);
+//        }
+//
+//        String[] classList = ListParse.stringToArray(classUidList);
+//
+//        //发布到每个学生
+//        for (String stuClassUid : classList) {
+//            StuClass stuClass = stuClassRepository.findByClassUid(stuClassUid);
+//            stuClass.getAssignmentList().add(assignment);
+//            List<Student> students = stuClass.getStudents();
+//            for (Student student : students) {
+//                SubmittedHomework submittedHomework = new SubmittedHomework();
+//                submittedHomework.setAssignmentUid(assignmentUid);
+//                submittedHomework.setStudentName(student.getName());
+//                submittedHomeworkRepository.save(submittedHomework);
+//
+//                student.getSubmittedHomeworks().add(submittedHomework);
+//                studentRepository.save(student);
+//            }
+//            stuClassRepository.save(stuClass);
+//        }
+//
+//        return new ResponseEntity<>(ResultModel.ok("作业发布成功"), HttpStatus.OK);
+    }
+
+    private ResponseEntity<ResultModel> releaseForClass(String[] classList, Assignment assignment){
+        //发布到每个学生
         for (String stuClassUid : classList) {
             StuClass stuClass = stuClassRepository.findByClassUid(stuClassUid);
             stuClass.getAssignmentList().add(assignment);
             List<Student> students = stuClass.getStudents();
             for (Student student : students) {
-
-
                 SubmittedHomework submittedHomework = new SubmittedHomework();
-                submittedHomework.setAssignmentUid(assignmentUid);
+                submittedHomework.setAssignmentUid(assignment.getAssignmentUid());
                 submittedHomework.setStudentName(student.getName());
                 submittedHomeworkRepository.save(submittedHomework);
 
                 student.getSubmittedHomeworks().add(submittedHomework);
                 studentRepository.save(student);
-
             }
             stuClassRepository.save(stuClass);
+        }
+        return new ResponseEntity<>(ResultModel.ok("作业发布成功"), HttpStatus.OK);
+    }
+
+    private ResponseEntity<ResultModel> releaseForStudent(String[] studentList, Assignment assignment){
+        for (String studentUid : studentList) {
+            Student student = studentRepository.findByStudentUid(studentUid);
+            SubmittedHomework submittedHomework = new SubmittedHomework();
+            submittedHomework.setAssignmentUid(assignment.getAssignmentUid());
+            submittedHomework.setStudentName(student.getName());
+            submittedHomeworkRepository.save(submittedHomework);
+
+            student.getSubmittedHomeworks().add(submittedHomework);
+            studentRepository.save(student);
+        }
+        return new ResponseEntity<>(ResultModel.ok("作业发布成功"), HttpStatus.OK);
+    }
+
+    //TODO：为单个学生发布作业
+    @ApiOperation(value = "发布作业-学生")
+    @PostMapping(value = "/teacher/release/student")
+    public ResponseEntity<ResultModel> releaseForStudent(Assignment assignment, HttpServletRequest request) throws ServletException {
+        Teacher teacher = userService.currentTeacher(request);
+        //Assignment相关
+        assignment.setTeacherUid(teacher.getId());
+        assignment.setCreateTime(new Date());
+
+        assignmentRepository.save(assignment);
+        String assignmentUid = assignment.getAssignmentUid();
+
+        teacher.getAssignments().add(assignment);
+
+        String studentUidList = assignment.getStudentList();
+        if (studentUidList == null) {
+            return new ResponseEntity<>(ResultModel.error(HttpStatus.FORBIDDEN, "学生列表为空"), HttpStatus.FORBIDDEN);
+        }
+
+        String[] studentList = ListParse.stringToArray(studentUidList);
+
+        //发布到每个学生
+//        for (String stuClassUid : classList) {
+//            StuClass stuClass = stuClassRepository.findByClassUid(stuClassUid);
+//            stuClass.getAssignmentList().add(assignment);
+//            List<Student> students = stuClass.getStudents();
+//            for (Student student : students) {
+//                SubmittedHomework submittedHomework = new SubmittedHomework();
+//                submittedHomework.setAssignmentUid(assignmentUid);
+//                submittedHomework.setStudentName(student.getName());
+//                submittedHomeworkRepository.save(submittedHomework);
+//
+//                student.getSubmittedHomeworks().add(submittedHomework);
+//                studentRepository.save(student);
+//            }
+//            stuClassRepository.save(stuClass);
+//        }
+
+        for (String studentUid : studentList) {
+            Student student = studentRepository.findByStudentUid(studentUid);
+            SubmittedHomework submittedHomework = new SubmittedHomework();
+            submittedHomework.setAssignmentUid(assignmentUid);
+            submittedHomework.setStudentName(student.getName());
+            submittedHomeworkRepository.save(submittedHomework);
+
+            student.getSubmittedHomeworks().add(submittedHomework);
+            studentRepository.save(student);
         }
 
         return new ResponseEntity<>(ResultModel.ok("作业发布成功"), HttpStatus.OK);
@@ -111,12 +203,12 @@ public class AssignmentController {
 
 
     @ApiOperation(value = "作业试题列表")
-    @RequestMapping(value = "/questions",method = RequestMethod.GET)
-    public ResponseEntity<ResultModel> findQuestionList(@RequestParam(value = "assignmentUid") String assignmentUid){
-        Assignment assignment=assignmentRepository.findByAssignmentUid(assignmentUid);
-        String[] qestionList=ListParse.stringToArray(assignment.getQuestionList());
-        List<Question> questions=questionRepository.findAllByNumberIn(qestionList);
-         return new ResponseEntity<>(ResultModel.ok(questions), HttpStatus.OK);
+    @RequestMapping(value = "/questions", method = RequestMethod.GET)
+    public ResponseEntity<ResultModel> findQuestionList(@RequestParam(value = "assignmentUid") String assignmentUid) {
+        Assignment assignment = assignmentRepository.findByAssignmentUid(assignmentUid);
+        String[] qestionList = ListParse.stringToArray(assignment.getQuestionList());
+        List<Question> questions = questionRepository.findAllByNumberIn(qestionList);
+        return new ResponseEntity<>(ResultModel.ok(questions), HttpStatus.OK);
 
     }
 
@@ -134,7 +226,7 @@ public class AssignmentController {
     }
 
     @ApiOperation(value = "获取老师发布的全部作业")
-     @GetMapping(value = "/teacher/assignmentList")
+    @GetMapping(value = "/teacher/assignmentList")
     public ResponseEntity<ResultModel> getAssignmentList(HttpServletRequest request) throws ServletException {
         Claims claims = (Claims) request.getAttribute("claims");
         String phoneNumber = (String) claims.get("sub");
