@@ -24,4 +24,15 @@ public interface SubmittedHomeworkRepository extends JpaRepository<SubmittedHome
     void checkHomeworkByAssignmentUid(String assignmentUid,int score,String comment);
 
     List<SubmittedHomework> findAll();
+
+    @Query(value = "select s.* from submit_homework s where s.assignment_uid in " +
+            "(select a.assignment_uid from assignment a where a.teacher_uid=?1 and a.class_list is not null)",
+    nativeQuery = true)
+    List<SubmittedHomework> findAllClassAssignmentByTeacherUid(String teacherUid);
+
+
+    @Query(value = "select s.* from submit_homework s where s.assignment_uid in " +
+            "(select a.assignment_uid from assignment a where a.teacher_uid=?1 and a.student_list is not null)",
+            nativeQuery = true)
+    List<SubmittedHomework> findAllTargetingAssignmentByTeacherUid(String teacherUid);
 }

@@ -195,6 +195,22 @@ function CheckHomeworkCtrl($scope, $http, $state, $stateParams) {
         $scope.submitList = response;
     });
 
+    // 查找班级作业
+    $http({
+        url: "submitHomework/getAllClassAssignment",
+        method: "get"
+    }).success(function (response) {
+        $scope.classHomeworks = response;
+    });
+
+    // 查找精准作业
+    $http({
+        url: "submitHomework/getAllTargetingAssignment",
+        method: "get"
+    }).success(function (response) {
+        $scope.targetingHomeworks = response;
+    });
+
     $scope.getQuestions = function (uid) {
 
         localStorage.setItem("submitHomeworkUid", uid);

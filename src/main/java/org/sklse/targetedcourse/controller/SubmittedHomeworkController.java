@@ -4,8 +4,10 @@ import io.swagger.annotations.ApiOperation;
 import org.sklse.targetedcourse.bean.Question;
 import org.sklse.targetedcourse.bean.ResultModel;
 import org.sklse.targetedcourse.bean.SubmittedHomework;
+import org.sklse.targetedcourse.bean.Teacher;
 import org.sklse.targetedcourse.repository.*;
 import org.sklse.targetedcourse.service.SubmittedHomeworkService;
+import org.sklse.targetedcourse.service.UserService;
 import org.sklse.targetedcourse.util.ListParse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -13,6 +15,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import springfox.documentation.annotations.ApiIgnore;
 
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
@@ -23,6 +27,9 @@ import java.util.List;
 @RestController
 @RequestMapping("submitHomework")
 public class SubmittedHomeworkController {
+
+    @Autowired
+    private UserService userService;
 
     @Autowired
     private SubmittedHomeworkRepository submittedHomeworkRepository;
@@ -49,6 +56,24 @@ public class SubmittedHomeworkController {
         List<SubmittedHomework> list=submittedHomeworkRepository.findAll();
 
         return new ResponseEntity<>(ResultModel.ok(HttpStatus.OK,list),HttpStatus.OK);
+    }
+
+    @ApiOperation("根据teacherId选出所有班级作业")
+    @RequestMapping(value="getAllClassAssignment",method = RequestMethod.GET)
+    public List<SubmittedHomework> getAllClassAssignment (HttpServletRequest request)throws ServletException {
+        Teacher teacher = userService.currentTeacher(request);
+        List<SubmittedHomework> list=submittedHomeworkRepository.findAllClassAssignmentByTeacherUid(String.valueOf(teacher.getId()) );
+
+        return list;
+    }
+
+    @ApiOperation("根据teacherId选出所有精准作业")
+    @RequestMapping(value="getAllTargetingAssignment",method = RequestMethod.GET)
+    public List<SubmittedHomework> getAllTargetingAssignment(HttpServletRequest request)throws ServletException{
+        Teacher teacher = userService.currentTeacher(request);
+        List<SubmittedHomework> list=submittedHomeworkRepository.findAllTargetingAssignmentByTeacherUid(String.valueOf(teacher.getId()) );
+
+        return list;
     }
 
     @ApiOperation("根据submittedHomeworkUid查询对应的试题题型列表")
