@@ -1,5 +1,15 @@
-<div class="row clearfix">
-
+<section class="content-header">
+    <h1>
+        作业批改
+        <small>Check Homework</small>
+    </h1>
+    <ol class="breadcrumb">
+        <li><a ui-sref="index.checkhomework"><i class="fa fa-dashboard"></i> 作业批改</a></li>
+    </ol>
+    <!--<ol class="breadcrumb">-->
+    <!--<li><a ui-sref="class1"><i class="fa fa-dashboard"></i> 班级管理</a></li>-->
+    <!--</ol>-->
+</section>
 
     <div class="col-md-10">
         <div class="box box-primary">
@@ -87,8 +97,9 @@
                 </div>
             </div>
         </div>
-        <!-- /. box -->
+    </div>
 
+<div class="col-md-10">
         <div class="box box-primary">
             <div class="box-header with-border">
                 <h3 class="box-title">精准训练</h3>
@@ -107,31 +118,6 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
-                <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                    </button>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                    </div>
-                    <!-- /.btn-group -->
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
-
-                    <div class="pull-right">
-                        1-50/200
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <!-- /.btn-group -->
-                    </div>
-                    <!-- /.pull-right -->
-                </div>
                 <div class="table-responsive mailbox-messages">
                     <table class="table table-hover table-striped">
                         <tbody>
@@ -175,11 +161,29 @@
 
                         </tr>
                         </tbody>
+
                     </table>
                     <!-- /.table -->
                 </div>
                 <!-- /.mail-box-messages -->
             </div>
+            <div class="box-footer no-padding">
+                <div class="mailbox-controls">
+
+
+                    <div class="pull-right">
+
+                        <div class="box-tools">
+                            <pagination class="pagination-sm" total-items="TotalItems" ng-model="currentPage" items-per-page = "numPerPage" max-size="maxSize"
+                                        first-text="首页" previous-text="上一页" next-text="下一页" last-text="尾页" boundary-links="true"
+                                        ng-change="pageChanged()" num-pages="totalPages" force-ellipses="false"></pagination>
+                        </div>
+
+                    </div>
+                    <!-- /.pull-right -->
+                </div>
+            </div>
+
             <!-- /.box-body -->
             <!--<div class="box-footer no-padding">-->
                 <!--<div class="mailbox-controls">-->
@@ -200,4 +204,3 @@
         </div>
         <!-- /. box -->
     </div>
-</div>
