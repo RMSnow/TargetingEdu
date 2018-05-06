@@ -183,25 +183,26 @@ function QuestionCtrl($scope, $http, $state) {
 
 function CheckHomeworkCtrl($scope, $http, $state, $stateParams) {
 
+    $scope.currentPage = 1;
+    $scope.numPerPage = 10;
+    $scope.maxSize = 5;
     var currentAssignmentUid = localStorage.getItem("currentAssignmentUid");
 
-    $http({
-        url: "assignment/findSubmitHomeworkByHomework",
-        method: "get",
-        params: {
-            uid: currentAssignmentUid
-        }
-    }).success(function (response) {
-        $scope.submitList = response;
-    });
+    $scope.getSubmitHomeworks=function(assignment_id){
+        localStorage.setItem("assignmentUid", assignment_id);
+        $state.go('index.checkClassHomework');
+    }
 
     // 查找班级作业
     $http({
-        url: "submitHomework/getAllClassAssignment",
-        method: "get"
+        url: "teacher/assignmentList",
+        method: "get",
     }).success(function (response) {
         $scope.classHomeworks = response;
     });
+
+
+
 
     // 查找精准作业
     $http({
@@ -217,6 +218,36 @@ function CheckHomeworkCtrl($scope, $http, $state, $stateParams) {
 
 
         $state.go("index.check");
+    }
+
+    var assignmentUid = localStorage.getItem("assignmentUid");
+    $http({
+        url: "assignment/findSubmitHomeworkByHomework",
+        method: "get",
+        params: {
+            currentPage: $scope.currentPage - 1,
+            numPerPage: $scope.numPerPage,
+            uid: assignmentUid
+
+        }
+    }).success(function (response) {
+        $scope.TotalItems = response.totalElements;
+        $scope.submitList = response.content;
+    });
+
+    $scope.pageChanged = function () {
+        $http({
+            url: "assignment/findSubmitHomeworkByHomework",
+            method: "get",
+            params: {
+                currentPage: $scope.currentPage - 1,
+                numPerPage: $scope.numPerPage,
+                uid: assignmentUid
+            }
+        }).success(function (response) {
+            $scope.TotalItems = response.totalElements;
+            $scope.submitList = response.content;
+        })
     }
 
 }

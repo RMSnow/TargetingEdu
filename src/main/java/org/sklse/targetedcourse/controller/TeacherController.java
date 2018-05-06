@@ -45,7 +45,15 @@ public class TeacherController {
     @GetMapping("assignmentList")
     public List<Assignment> assignmentList(HttpServletRequest request) throws ServletException {
         Teacher teacher = userService.currentTeacher(request);
-        return teacher.getAssignments();
+        List<Assignment> assignments=teacher.getAssignments();
+        List<Assignment> result=new ArrayList<>();
+        for(Assignment assignment:assignments){
+            if(assignment.getClassList()!=null){
+                result.add(assignment);
+            }
+        }
+        System.out.println(result.size());
+        return result;
     }
 
     @ApiOperation(value = "班级列表")

@@ -2,6 +2,8 @@ package org.sklse.targetedcourse.repository;
 
 import org.sklse.targetedcourse.bean.Answer;
 import org.sklse.targetedcourse.bean.SubmittedHomework;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
@@ -17,7 +19,7 @@ public interface SubmittedHomeworkRepository extends JpaRepository<SubmittedHome
 
     SubmittedHomework findByAssignmentUid(String assignmentUid);
 
-    List<SubmittedHomework> findAllByAssignmentUid(String assignmentUid);
+    Page<SubmittedHomework> findAllByAssignmentUid(String assignmentUid, Pageable pageable);
 
     @Modifying
     @Query(value = "update SubmittedHomework sh set score=?2, comment=?3 where assignmentUid=?1")

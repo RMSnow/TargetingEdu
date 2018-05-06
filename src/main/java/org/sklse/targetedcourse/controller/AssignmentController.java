@@ -7,6 +7,9 @@ import org.sklse.targetedcourse.repository.*;
 import org.sklse.targetedcourse.service.UserService;
 import org.sklse.targetedcourse.util.ListParse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -236,13 +239,21 @@ public class AssignmentController {
 
     }
 
+//    @ApiOperation(value = "学生作业列表")
+//    @RequestMapping(value = "findSubmitHomeworkByHomework", method = RequestMethod.GET)
+//    public List<SubmittedHomework> findSubmitHomeworkByHomework(@RequestParam String uid) {
+//
+//        List<SubmittedHomework> submitHomeworkList = submittedHomeworkRepository.findAllByAssignmentUid(uid);
+//
+//        return submitHomeworkList;
+//    }
     @ApiOperation(value = "学生作业列表")
     @RequestMapping(value = "findSubmitHomeworkByHomework", method = RequestMethod.GET)
-    public List<SubmittedHomework> findSubmitHomeworkByHomework(@RequestParam String uid) {
-
-        List<SubmittedHomework> submitHomeworkList = submittedHomeworkRepository.findAllByAssignmentUid(uid);
-
-        return submitHomeworkList;
+    public Page<SubmittedHomework> findSubmitHomeworkByHomework(@RequestParam(value = "currentPage", defaultValue = "0") Integer page,
+                                                                @RequestParam(value = "numPerPage", defaultValue = "10") Integer pageSize,
+                                                                @RequestParam String uid) {
+        Pageable pageable = new PageRequest(page, pageSize);
+        return submittedHomeworkRepository.findAllByAssignmentUid(uid,pageable);
     }
 
 //    @ApiOperation(value = "修改作业")

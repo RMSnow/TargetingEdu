@@ -291,6 +291,17 @@ app.config(function ($stateProvider, $urlRouterProvider, $locationProvider,
                 controller: CheckHomeworkCtrl
             }
         }
+    }).state('index.checkClassHomework', {
+        url: '/checkClassHomework',
+        params: {
+            'uid': null,
+        },
+        views: {
+            'content@index': {
+                templateUrl: 'partials/checkClassHomework.html',
+                controller: CheckHomeworkCtrl
+            }
+        }
     }).state('index.homeworkPreview', {
         url: '/homeworkPreview',
         views: {

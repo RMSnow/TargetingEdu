@@ -10,6 +10,9 @@ import org.sklse.targetedcourse.service.SubmittedHomeworkService;
 import org.sklse.targetedcourse.service.UserService;
 import org.sklse.targetedcourse.util.ListParse;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -62,9 +65,7 @@ public class SubmittedHomeworkController {
     @RequestMapping(value="getAllClassAssignment",method = RequestMethod.GET)
     public List<SubmittedHomework> getAllClassAssignment (HttpServletRequest request)throws ServletException {
         Teacher teacher = userService.currentTeacher(request);
-        List<SubmittedHomework> list=submittedHomeworkRepository.findAllClassAssignmentByTeacherUid(String.valueOf(teacher.getId()) );
-
-        return list;
+        return submittedHomeworkRepository.findAllClassAssignmentByTeacherUid(String.valueOf(teacher.getId()));
     }
 
     @ApiOperation("根据teacherId选出所有精准作业")

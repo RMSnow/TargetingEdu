@@ -20,41 +20,17 @@
             </div>
             <!-- /.box-header -->
             <div class="box-body no-padding">
-                <div class="mailbox-controls">
-                    <!-- Check all button -->
-                    <button type="button" class="btn btn-default btn-sm checkbox-toggle"><i class="fa fa-square-o"></i>
-                    </button>
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-trash-o"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-reply"></i></button>
-                        <button type="button" class="btn btn-default btn-sm"><i class="fa fa-share"></i></button>
-                    </div>
-                    <!-- /.btn-group -->
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-refresh"></i></button>
-                    <button type="button" class="btn btn-default btn-sm"><i class="fa fa-plus"></i></button>
-
-                    <div class="pull-right">
-                        1-50/200
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <!-- /.btn-group -->
-                    </div>
-                    <!-- /.pull-right -->
-                </div>
                 <div class="table-responsive mailbox-messages">
                     <table class="table table-hover table-striped">
                         <tbody>
                         <tr>
                             <th></th>
 
-                            <th>学生姓名</th>
-                            <th>提交状态</th>
-                            <th>批改状态</th>
-                            <th>提交时间</th>
+                            <th>作业名称</th>
+                            <th>作业类型</th>
+                            <th>发布时间</th>
+                            <th>班级</th>
+                            <th>提交人数</th>
                             <th>操作</th>
                         </tr>
 
@@ -64,26 +40,26 @@
                                                            data-ng-model="x.$checked"
                                                            ng-checked="isSelected(x.id)"
                                                            data-ng-changed="checkedChange(x.id,x.$checked)"/></td>
-                            <td>{{x.studentName}}</td>
+                            <td>{{x.title}}</td>
+                            <td>{{x.type}}</td>
+                            <td>{{x.createTime}}</td>
+                            <td>初二一班</td>
+                            <td>{{x.committedNumber}}</td>
+                            <!--<td ng-switch={{x.submitted}}>-->
+                                <!--<span ng-switch-when=false class="label label-warning">未提交</span>-->
+                                <!--<span ng-switch-when=true class="label label-success">已提交</span>-->
+                                 <!--<span ng-switch-default class="label label-warning">未提交</span>-->
+                            <!--</td>-->
+                            <!--<td ng-switch={{x.checked}}>-->
+                                <!--<span ng-switch-when=false class="label label-warning">未批改</span>-->
+                                <!--<span ng-switch-when=true class="label label-success">已批改</span>-->
+                                <!--<span ng-switch-default class="label label-warning">未批改</span>-->
+                            <!--</td>-->
 
-                            <td ng-switch={{x.submitted}}>
-                                <span ng-switch-when=false class="label label-warning">未提交</span>
-                                <span ng-switch-when=true class="label label-success">已提交</span>
-                                 <span ng-switch-default class="label label-warning">未提交</span>
-                            </td>
-                            <td ng-switch={{x.checked}}>
-                                <span ng-switch-when=false class="label label-warning">未批改</span>
-                                <span ng-switch-when=true class="label label-success">已批改</span>
-                                <span ng-switch-default class="label label-warning">未批改</span>
-                            </td>
-
-                            <td>{{x.submitTime}}</td>
                             <td>
-                                <div class="col-md-6">
                                     <button type="button" class="btn btn-block btn-primary"
-                                            ng-click="getQuestions(x.uid)">批改
+                                            ng-click="getSubmitHomeworks(x.assignmentUid)">批改
                                     </button>
-                                </div>
                             </td>
 
                         </tr>
@@ -96,18 +72,16 @@
             <!-- /.box-body -->
             <div class="box-footer no-padding">
                 <div class="mailbox-controls">
-                    <!-- Check all button -->
 
 
                     <div class="pull-right">
-                        1-50/200
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i>
-                            </button>
+
+                        <div class="box-tools">
+                            <pagination class="pagination-sm" total-items="TotalItems" ng-model="currentPage" items-per-page = "numPerPage" max-size="maxSize"
+                                        first-text="首页" previous-text="上一页" next-text="下一页" last-text="尾页" boundary-links="true"
+                                        ng-change="pageChanged()" num-pages="totalPages" force-ellipses="false"></pagination>
                         </div>
-                        <!-- /.btn-group -->
+
                     </div>
                     <!-- /.pull-right -->
                 </div>
@@ -207,24 +181,22 @@
                 <!-- /.mail-box-messages -->
             </div>
             <!-- /.box-body -->
-            <div class="box-footer no-padding">
-                <div class="mailbox-controls">
-                    <!-- Check all button -->
+            <!--<div class="box-footer no-padding">-->
+                <!--<div class="mailbox-controls">-->
 
 
-                    <div class="pull-right">
-                        1-50/200
-                        <div class="btn-group">
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-left"></i>
-                            </button>
-                            <button type="button" class="btn btn-default btn-sm"><i class="fa fa-chevron-right"></i>
-                            </button>
-                        </div>
-                        <!-- /.btn-group -->
-                    </div>
-                    <!-- /.pull-right -->
-                </div>
-            </div>
+                    <!--<div class="pull-right">-->
+
+                        <!--<div class="box-tools">-->
+                            <!--<pagination class="pagination-sm" total-items="TotalItems" ng-model="currentPage" items-per-page = "numPerPage" max-size="maxSize"-->
+                                        <!--first-text="首页" previous-text="上一页" next-text="下一页" last-text="尾页" boundary-links="true"-->
+                                        <!--ng-change="pageChanged()" num-pages="totalPages" force-ellipses="false"></pagination>-->
+                        <!--</div>-->
+
+                    <!--</div>-->
+                    <!--&lt;!&ndash; /.pull-right &ndash;&gt;-->
+                <!--</div>-->
+            <!--</div>-->
         </div>
         <!-- /. box -->
     </div>
