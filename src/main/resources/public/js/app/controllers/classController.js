@@ -31,6 +31,47 @@ function ClassListCtrl($scope, $http, $state) {
     }
     getClassList();
 
+    //获取学生列表
+    var getStudentList = function () {
+        $http({
+            url: "teacher/studentList",
+            method: "get",
+        }).success(function (response) {
+            $scope.students = response;
+        })
+    }
+    getStudentList();
+
+    //TODO：添加弹框展示
+    $scope.showModifyModal = function () {
+        // var modalInstance = $modal.open({
+        //     templateUrl: 'modal',
+        //     controller: AssignmentModelCtrl,
+        //     scope: $scope
+        // });
+        //
+        // modalInstance.result.then(function (result) {
+        //     result.classList = class_id;
+        //     result.studentList = student_id;
+        //     result.questionList = storedQuestions;
+        //     $http({
+        //         url: "assignment/teacher/release",
+        //         method: "POST",
+        //         params: result
+        //     }).success(function (response) {
+        //         console.log("response: " + response);
+        //         localStorage.removeItem("selectQuestions");
+        //         localStorage.removeItem("class_id");
+        //         localStorage.removeItem("student_id");
+        //
+        //         if (response['code'] == 200) {
+        //             alert(response['content'])
+        //             $state.go('index.assignment');
+        //         }
+        //     })
+        // });
+    };
+
     $scope.data = null;
     $scope.rows = [];
     $scope.teacher = null;

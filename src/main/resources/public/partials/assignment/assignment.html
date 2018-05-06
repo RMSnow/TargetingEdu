@@ -21,12 +21,9 @@
                     <div class="icon">
 
                         <!--TODO: 查看所有学生-->
-                        <!--<i class="ion ion-person" ui-sref="index.addHomework"></i>-->
                         <i class="ion ion-person" ng-click="getStudents(x.classUid)"></i>
                     </div>
-
-                    <!--TODO: 页面跳转（传入classUid）-->
-                    <a ng-click="goAddHomework(x.classUid)" class="small-box-footer">Assignment<i class="fa fa-arrow-circle-right" ></i></a>
+                    <a ng-click="goAddHomework(x.classUid)" class="small-box-footer">布置作业<i class="fa fa-arrow-circle-right" ></i></a>
                 </div>
             </div>
         </div>
@@ -92,9 +89,8 @@
                                 <td>{{x.parentTel}}</td>
                                 <td>{{x.parentWechat}}</td>
                                 <td>
-                                    <!--TODO：存id，并给单个学生布置作业-->
                                     <button type="submit" class="btn btn-sm btn-primary"
-                                            ng-click="goStudentAddHomework(x.studentUid)">Assignment
+                                            ng-click="goStudentAddHomework(x.studentUid)">布置作业
                                     </button>
                                 </td>
                             </tr>
