@@ -5,9 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.io.Serializable;
 
-/**
- * Created by guolanqing on 2017/7/13.
- */
+
 @Entity
 @Table(name = "stu_class")
 public class StuClassStudent implements Serializable{

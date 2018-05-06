@@ -5,9 +5,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-/**
- * Created by WYJ on 2018/4/24.
- */
+
 public interface AnswerRepository extends JpaRepository<Answer,String> {
 
     @Query(value = "select a.* from Answer a where AnswerUid=?1",

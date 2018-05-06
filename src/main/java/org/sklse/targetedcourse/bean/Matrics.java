@@ -5,9 +5,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by MIC on 2017/8/11.
- */
+
 @Entity
 @Table(name = "matrics")
 public class Matrics {

@@ -17,9 +17,7 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * Created by MIC on 2017/8/12.
- */
+
 @RestController
 @RequestMapping("collectedquestion")
 public class CollectedQuestionController {

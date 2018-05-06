@@ -8,9 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-/**
- * Created by guolanqing on 2017/4/6.
- */
+
 public interface StudentRepository extends JpaRepository<Student, String> {
     public Student findByStudentUid(String studentUid);
 

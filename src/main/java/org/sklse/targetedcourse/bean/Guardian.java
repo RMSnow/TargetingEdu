@@ -7,9 +7,7 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by LJ on 2017/7/19.
- */
+
 @Entity
 @Table(name = "Guardian")
 public class Guardian {

@@ -16,9 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
-/**
- * Created by MIC on 2017/8/12.
- */
+
 @RestController
 @RequestMapping("group")
 public class CollectionGroupController {

@@ -5,9 +5,7 @@ import org.hibernate.annotations.GenericGenerator;
 import javax.persistence.*;
 import java.util.List;
 
-/**
- * Created by MIC on 2017/7/31.
- */
+
 @Entity
 @Table(name = "Exam")
 public class Exam {

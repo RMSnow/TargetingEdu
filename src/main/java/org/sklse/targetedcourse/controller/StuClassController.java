@@ -24,9 +24,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * Created by Alison on 2017/4/13.
- */
+
 @RestController
 @RequestMapping("class")
 public class StuClassController {

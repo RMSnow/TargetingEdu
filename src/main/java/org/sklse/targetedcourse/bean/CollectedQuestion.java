@@ -5,9 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-/**
- * Created by MIC on 2017/8/11.
- */
+
 @Entity
 @Table(name = "collectedquestion")
 public class CollectedQuestion {

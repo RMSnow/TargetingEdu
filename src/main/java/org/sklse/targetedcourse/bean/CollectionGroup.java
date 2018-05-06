@@ -6,9 +6,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import java.util.List;
 
-/**
- * Created by MIC on 2017/8/12.
- */
+
 @Entity
 @Table(name="clollectiongroup")
 public class CollectionGroup {

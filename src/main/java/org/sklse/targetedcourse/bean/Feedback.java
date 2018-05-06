@@ -3,9 +3,7 @@ package org.sklse.targetedcourse.bean;
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
-/**
- * Created by LJ on 2017/7/19.
- */
+
 @Entity
 public class Feedback {
 

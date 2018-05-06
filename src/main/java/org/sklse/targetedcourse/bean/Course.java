@@ -5,9 +5,7 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 import java.util.Date;
 
-/**
- * Created by LJ on 2017/7/19.
- */
+
 @Entity
 @Table(name = "Course")
 public class Course {

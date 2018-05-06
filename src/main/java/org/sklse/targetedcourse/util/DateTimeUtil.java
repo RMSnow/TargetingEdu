@@ -3,9 +3,7 @@ package org.sklse.targetedcourse.util;
 import java.util.Calendar;
 import java.util.Date;
 
-/**
- * Created by yusee on 2017/11/5.
- */
+
 public class DateTimeUtil {
     /**
      * 判断二个时间是否在同一个周

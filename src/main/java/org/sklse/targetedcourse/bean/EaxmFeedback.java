@@ -4,9 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.OneToMany;
 import java.util.List;
 
-/**
- * Created by MIC on 2017/8/11.
- */
+
 @Entity   //考试反馈
 public class EaxmFeedback extends Feedback {
 

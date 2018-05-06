@@ -4,9 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-/**
- * Created by LJ on 2017/7/19.
- */
+
 @Entity
 @Table(name = "Chapter")
 public class Chapter {

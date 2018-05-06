@@ -6,9 +6,7 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-/**
- * Created by guolanqing on 2017/7/25.
- */
+
 @Entity
 @Table(name = "Assignment")
 public class Assignment {
