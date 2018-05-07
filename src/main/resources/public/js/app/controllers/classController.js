@@ -51,27 +51,6 @@ function ClassListCtrl($scope, $http, $state,$modal) {
         });
 
         modalInstance.result.then(function (result) {
-            // result.classList = class_id;
-            // //TODO: 取student-id
-            // result.studentList = student_id;
-            // result.questionList = storedQuestions;
-            // $http({
-            //     url: "assignment/teacher/release",
-            //     method: "POST",
-            //     params: result
-            // }).success(function (response) {
-            //     console.log("response: " + response);
-            //     localStorage.removeItem("selectQuestions");
-            //
-            //     //TODO： remove？
-            //     localStorage.removeItem("class_id");
-            //     localStorage.removeItem("student_id");
-            //
-            //     if (response['code'] == 200) {
-            //         alert(response['content'])
-            //         $state.go('index.assignment');
-            //     }
-            // })
         });
     };
 
@@ -203,8 +182,47 @@ function ClassListCtrl($scope, $http, $state,$modal) {
         });
     };
 
-    $scope.getStudents = function (id) {
+    // var firstClass_id=localStorage.getItem("firstClassUid");
+    //
+    // $scope.currentPage = 1;//当前页
+    // $scope.numPerPage = 10;//每页显示1条数据
+    // $scope.maxSize = 5;
+    // $http({
+    //     url: "class/findPageStudentsByClassNumber",
+    //     method: 'get',
+    //     params: {
+    //         currentPage: $scope.currentPage-1,
+    //         numPerPage: $scope.numPerPage,
+    //         stuclass: firstClass_id
+    //     }
+    // }).success(function (response) {
+    //     sessionStorage.setItem("class_id", id);
+    //     $scope.TotalItems = response.totalElements;
+    //     $scope.items = response.content;
+    //     $(".box box-primary").attr('id', id);
+    // })
+    //
+    // $scope.pageChanged = function () {
+    //     var id = sessionStorage.getItem("class_id");
+    //     $http({
+    //         url: "class/findPageStudentsByClassNumber",
+    //         method: 'get',
+    //         params: {
+    //             currentPage: $scope.currentPage - 1,
+    //             numPerPage: $scope.numPerPage,
+    //             stuclass: id
+    //         }
+    //     }).success(function (response) {
+    //         $scope.TotalItems = response.totalElements;
+    //         $scope.items = response.content;
+    //     }).error(function (response) {
+    //         $scope.error = "An error has occured!"
+    //             + response.ExceptionMessage;
+    //     })
+    //
+    // }
 
+    $scope.getStudents = function (id) {
         localStorage.setItem("class_id",id);
 
         $scope.currentPage = 1;//当前页
@@ -321,6 +339,8 @@ function StudentCtrl($scope, $http, $state) {
         });
 
     }
+
+
 
     $scope.getStudents = function (id) {
 
@@ -469,8 +489,6 @@ function AddStudentCtrl($scope, $http, $state) {
             }
 
         })
-
-
     }
 
 }

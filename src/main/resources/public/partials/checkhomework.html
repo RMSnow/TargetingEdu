@@ -10,7 +10,7 @@
     <!--<li><a ui-sref="class1"><i class="fa fa-dashboard"></i> 班级管理</a></li>-->
     <!--</ol>-->
 </section>
-
+<br>
     <div class="col-md-10">
         <div class="box box-primary">
             <div class="box-header with-border">
@@ -140,9 +140,10 @@
                             <td>{{x.studentName}}</td>
 
                             <td ng-switch={{x.submitted}}>
-                                <span ng-switch-when=false class="label label-warning">未提交</span>
-                                <span ng-switch-when=true class="label label-success">已提交</span>
-                                <span ng-switch-default class="label label-warning">未提交</span>
+                                <span ng-switch-when=false class="label label-warning">已提交</span>
+                                <span ng-switch-when=true class="label label-warning">已提交</span>
+
+                                <span ng-switch-default class="label label-success">已提交</span>
                             </td>
                             <td ng-switch={{x.checked}}>
                                 <span ng-switch-when=false class="label label-warning">未批改</span>
